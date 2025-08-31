@@ -1,0 +1,748 @@
+body {
+  margin: 0;
+  font-family: "Futura", "Yu Gothic", sans-serif;
+}
+
+header {
+  box-sizing:border-box;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 2;
+}
+
+#logo {
+  margin-left: 5%;
+  font-weight: bold;
+  width: 80%;
+  height: auto;
+}
+
+nav {
+  width: 50%;
+}
+
+header a {
+  width: 40%;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-right: 10px;
+  display: flex;
+}
+
+nav ul li {
+  font-size: calc(100vw/60);
+  margin-right: 5%;
+  margin: 0 0 0 auto;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/** 共通 **/
+h2 {
+  margin-bottom: 0;
+  font-size: calc(100vw/60);
+  font-weight: lighter;
+  font-family: 'Courier New',sans-serif;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 1s ease;
+}
+
+h3 {
+  font-size: calc(100vw/40);
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+/* メッセージセクション */
+.message-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 5%;
+  text-align: center;
+  padding: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.highlight-word {
+  font-size: calc(100vw/40);
+  font-weight: bold;
+}
+
+.normal-word {
+  font-size: calc(100vw/80);
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.message-sec p {
+  animation: slideUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* それぞれの段落に異なる遅延を適用 */
+.message-sec p:nth-child(1) { animation-delay: 0.3s; }
+.message-sec p:nth-child(2) { animation-delay: 0.6s; }
+.message-sec p:nth-child(3) { animation-delay: 0.9s; }
+.message-sec p:nth-child(4) { animation-delay: 1.2s; }
+.message-sec p:nth-child(5) { animation-delay: 1.5s; }
+.message-sec p:nth-child(6) { animation-delay: 1.8s; }
+
+
+/* トレーニング・ストレッチの紹介セクション */
+.program-sec {
+  box-sizing:border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+/* pc画面 */
+.for-pc {
+  display: block;
+}
+
+/* スマホ画面 */
+.for-sp {
+  display: none;
+}
+
+.grid-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  width: 100%;
+  margin: auto;
+  background-color: #FFFFFF;
+  padding-bottom: 5%;
+}
+
+.grid-block-1 {
+  aspect-ratio: 1 / 1;
+  background-color: #FFDBC9;
+  position: relative;
+  margin: 0 0 0 30%;
+}
+
+.grid-block-2 {
+  aspect-ratio: 1 / 1;
+  background-color: #FFDBC9;
+  position: relative;
+  margin: 0 30% 0 0;
+}
+
+.training-image {
+  background-image: url('../images/training-img.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+}
+
+.stretch-image {
+  background-image: url('../images/stretch-img.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: calc(100vw/20);
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.train-summary {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000000;
+  font-size: calc(100vw/80);
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5%;
+}
+
+.train-description {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  color: #000000;
+  font-size: calc(100vw/110);
+  text-align: center;
+  padding-top: 5%;
+}
+
+.stretch-summary {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000000;
+  font-size: calc(100vw/80);
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5%;
+}
+
+.stretch-description {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000000;
+  font-size: calc(100vw/110);
+  text-align: center;
+  padding-top: 5%;
+}
+
+
+/* 料金プランセクション */
+.plan-sec {
+  box-sizing:border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  padding-top: 5%;
+  padding-bottom: 10%;
+  background-color: #EEEEEE;
+  width: 100%;
+}
+
+.content-blocks {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  width: 80%;
+  font-size: calc(100vw/60);
+}
+
+.light-course,.advance-course {
+  background-color: #FFFFFF;
+  padding: 5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.light-course {
+  color: #555555;
+}
+
+.advance-course {
+  color: #ff7761;
+}
+
+.charge {
+  font-size: calc(100vw/30);
+  color: #000000;
+}
+
+.light-course p {
+  color: #000000;
+  font-size: calc(100vw/80);
+  font-weight: lighter;
+}
+
+.advance-course p {
+  color: #000000;
+  font-size: calc(100vw/80);
+  font-weight: lighter;
+}
+
+.price-list {
+  width: 40%;
+  margin-top: 5%;
+}
+
+.price-list img {
+  width: 100%;
+}
+
+/*初回の流れセクション*/
+.session-sec {
+  box-sizing:border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: 5% 0;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 5%;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.rectangle {
+  background-color: #ff7761;
+  width: calc(100vw/90);
+  height: calc(100vw/50);
+}
+
+.content span {
+  font-size: calc(100vw/50);
+  font-weight: bold;
+}
+
+.session-sec p {
+  font-size: calc(100vw/70);
+}
+
+
+/*予約ボタンセクション*/
+.reservation-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5% 0;
+  background-color: #FFDBC9;
+  width: 100%;
+}
+
+.button {
+  height: 20%;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 1% 2%;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border: 5px solid #000000;
+  font-size: calc(100vw/50);
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+}
+
+
+/** トレーナー紹介セクション **/
+.profile-sec {
+  box-sizing:border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 5%;
+  margin: 5% 0;
+  width: 100%;
+}
+
+.profile-container {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.profile-image {
+  flex-basis: 50%;
+  display: flex;
+  align-items: stretch;
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
+  padding: 0 20px;
+}
+
+.profile-content h4 {
+  font-size: calc(100vw/60);
+}
+
+.profile-content h5 {
+  font-size: calc(100vw/70);
+  font-weight: lighter;
+}
+
+.profile-content h6 {
+  font-size: calc(100vw/70);
+  margin: 0 auto;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-weight: lighter;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-content h4 {
+  margin: 10px 0;
+}
+
+.profile-content p {
+  font-size: calc(100vw/70);
+}
+
+
+/*Q&Aセクション*/
+.qa-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #EEEEEE;
+  padding: 5% 0;
+  width: 100%;
+}
+
+/* inputのチェックボックスを非表示 */
+.accordion-hidden {
+  display: none;
+}
+
+/* 見出しボタン部分 */
+.accordion-open {
+  display: flex;
+  background-color: white;
+  cursor: pointer;
+  margin: 5px 0;
+  position: relative;
+  width: 60%;
+  gap: 5%;
+  font-size: calc(100vw/80);
+}
+
+.question-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  background-color: black;
+  color: white;
+}
+
+/* ＋アイコン */
+.accordion-open::before,
+.accordion-open::after {
+  content: '';
+  width: calc(100vw/60);
+  height: 3px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+/* アイコンのー */
+.accordion-open::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: .5s;
+}
+
+/* アコーディオンが開いたらーに */
+.accordion-hidden:checked+.accordion-open:after {
+  transform: translateY(-50%) rotate(0);
+}
+
+/* アコーディオン中身部分 */
+.accordion-inner {
+  width: 70%;
+  display: block;
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: 0.5s;
+  /* 表示速度の設定 */
+  cursor: pointer;
+  /*回答の位置調整*/
+  display: flex;
+  justify-content: center;
+  font-size: calc(100vw/80);
+}
+
+/* チェックボックスにチェックが入ったら中身部分を表示する */
+.accordion-hidden:checked+.accordion-open+.accordion-inner {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+}
+
+
+/* フッター */
+.footer {
+  background-color: white;
+  color: black;
+  padding: 40px;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
+  grid-template-rows: repeat(4, auto); /* 4行のグリッド */
+  gap: 20%;
+  margin-bottom: 20%;
+  font-size: calc(100vw/80); /* テキストのサイズ */
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  font-size: calc(100vw/100);
+}
+
+/** レスポンシブ対応 **/
+@media (max-width: 960px) {
+}
+
+@media (max-width: 600px) {
+  /* ヘッダー */
+  header {
+    padding: 10px;
+  }
+
+  #logo {
+    width: 90%;
+  }
+
+  nav ul li {
+    font-size: calc(100vw/50);
+    margin-right: 5%;
+    margin: 0 0 0 auto;
+  }
+
+  /* 共通セクション */
+  h2 {
+    font-size: calc(100vw/30);
+  }
+  
+  h3 {
+    font-size: calc(100vw/20);
+  }
+
+  /* メッセージセクション */
+  .highlight-word {
+    font-size: calc(100vw/20);
+    font-weight: bold;
+  }
+  
+  .normal-word {
+    font-size: calc(100vw/40);
+  }
+
+  /* プログラムセクション */
+  .for-pc {
+    display: none;
+  }
+  
+  .for-sp {
+    display: block;
+  }
+
+  .grid-section {
+    grid-template-columns: none;
+    width: 80%;
+  }
+
+  .grid-block-1 {
+    margin: 0;
+  }
+
+  .grid-block-2 {
+    margin: 0;
+  }
+
+  .centered-text {
+    font-size: calc(100vw/10);
+  }
+  
+  .train-summary {
+    font-size: calc(100vw/40);
+  }
+  
+  .train-description {
+    font-size: calc(100vw/50);
+  }
+  
+  .stretch-summary {
+    font-size: calc(100vw/40);
+  }
+  
+  .stretch-description {
+    font-size: calc(100vw/50);
+  }
+
+  /* 料金セクション */
+  .plan-sec .content-blocks {
+    width: 90%;
+  }
+
+  .content-blocks {
+    display: block;
+    font-size: calc(100vw/30);
+  }
+  
+  .light-course,.advance-course {
+    width: auto;
+  }
+
+  .light-course {
+    margin-bottom: 10%;
+  }
+
+  .charge {
+    font-size: calc(100vw/20);
+  }
+  
+  .light-course p {
+    font-size: calc(100vw/30);
+  }
+  
+  .advance-course p {
+    font-size: calc(100vw/30);
+  }
+
+  .price-list {
+    width: 80%;
+    margin-top: 10%;
+  }
+  
+  .price-list img {
+    width: 100%;
+  }
+
+  /* 初回の流れセクション */
+  .content {
+    width: 80%;
+  }
+
+  .rectangle {
+    width: calc(100vw/90);
+    height: calc(100vw/20);
+  }
+  
+  .content span {
+    font-size: calc(100vw/20);
+  }
+  
+  .session-sec p {
+    font-size: calc(100vw/30);
+  }
+
+  /* 予約セクション */
+  .reservation-sec .button{
+    font-size: calc(100vw/30);
+  }
+
+  /* トレーナー紹介セクション */
+  .profile-container {
+    display: block;
+  }
+
+  .profile-content h4 {
+    font-size: calc(100vw/20);
+    margin-top: 5%;
+  }
+  
+  .profile-content h5 {
+    font-size: calc(100vw/30);
+    margin-top: 0;
+  }
+  
+  .profile-content h6 {
+    font-size: calc(100vw/30);
+  }
+
+  .profile-content p {
+    font-size: calc(100vw/30);
+  }
+
+  /* Q&Aセクション */
+  .accordion-open {
+    width: 90%;
+    font-size: calc(100vw/30);
+  }
+
+  .accordion-inner {
+    font-size: calc(100vw/30);
+  }
+
+  .accordion-open::before,
+  .accordion-open::after {
+    width: calc(100vw/50);
+  }
+
+  /* フッター */
+  .footer {
+    width: 40%;
+  }
+
+  .footer-links {
+    gap: 20%;
+    margin-bottom: 40%;
+    font-size: calc(100vw/40);
+  }
+}
