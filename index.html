@@ -46,23 +46,10 @@
   <section class="blog-sec" id="blog-area">
     <h2 id="blog-title">BLOG</h2>
     <h3>ブログ</h3>
-    <div class="text-line top">
-      <a href="https://motorogu-essays-in-idleness.com/25%e3%83%91%e3%83%bc%e3%82%bd%e3%83%8a%e3%83%ab%e3%83%88%e3%83%ac%e3%83%bc%e3%83%8a%e3%83%bc%e3%81%a8%e3%81%97%e3%81%a6%e7%8b%ac%e7%ab%8b%e3%82%92%e5%bf%97%e3%81%99%e4%ba%ba%e3%81%ab%e5%bd%b9/"></a>
-      <p>パーソナルトレーナーとして独立をするには？<br>経験を踏まえて</p>
+    <div id="posts-container" class="text-line">
+      <p>記事を読み込んでいます...</p>
     </div>
-    <div class="text-line">
-      <a href="https://motorogu-essays-in-idleness.com/24%e4%bd%bf%e3%81%88%e3%82%8b%e7%ad%8b%e8%82%89%e3%81%a8%e4%bd%bf%e3%81%88%e3%81%aa%e3%81%84%e7%ad%8b%e8%82%89%e3%81%9f%e3%81%a0%e7%8e%8b%e9%81%93%e3%81%82%e3%82%8b%e3%81%ae%e3%81%bf/"></a>
-      <p>使える筋肉と使えない筋肉<br>ただ王道あるのみ</p>
-    </div>
-    <div class="text-line">
-      <a href="https://motorogu-essays-in-idleness.com/23%e3%80%90%e5%88%9d%e5%bf%83%e8%80%85%e5%90%91%e3%81%91%e3%80%91%e6%9c%ac%e6%b0%97%e3%81%a7%e5%bc%b7%e3%81%8f%e3%81%aa%e3%82%8a%e3%81%9f%e3%81%84%e4%ba%ba%e4%bb%a5%e5%a4%96%e8%aa%ad%e3%82%80/"></a>
-      <p>本気で強くなりたい人以外読むの禁止<br>トレーナーが徹底解説</p>
-    </div>
-    <div class="text-line">
-      <a href="https://motorogu-essays-in-idleness.com/%e3%81%93%e3%82%93%e3%81%ab%e3%81%a1%e3%81%af%ef%bc%81moto%e3%81%a7%e3%81%99%ef%bc%81/"></a>
-      <p>これ分かってないと無理！ダイエットしたい人へ<br>初歩的な栄養学の基本を解説</p>
-    </div>
-    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button">記事一覧</a>
+    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button">Post List</a>
   </section>
 
   <section class="phrase-sec" id="phrase-area">
@@ -217,6 +204,75 @@
           locationTitle.style.borderBottomColor = '#ff7761';
         }
       });
+
+      // 対象のブログ著者のRSSフィードURL
+      // WordPressの場合、著者ページの末尾に /feed/ をつけるとRSSフィードを取得できることが一般的です
+      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
+      
+      // 複数のCORSプロキシサービスを定義（フォールバック機能）
+      const proxyServices = [
+          'https://corsproxy.io/?' + encodeURIComponent(feedUrl)       
+      ];
+
+      // 記事を表示するコンテナ要素を取得
+      const postsContainer = document.getElementById('posts-container');
+
+      // プロキシサービスを順番に試す関数
+      async function fetchWithFallback() {
+          for (let i = 0; i < proxyServices.length; i++) {
+              try {
+                  console.log(`プロキシサービス ${i + 1} を試行中: ${proxyServices[i]}`);
+                  const response = await fetch(proxyServices[i]);
+                  
+                  if (!response.ok) {
+                      throw new Error(`HTTP error! status: ${response.status}`);
+                  }
+                  
+                  return await response.text();
+
+              } catch (error) {
+                  console.log(`プロキシサービス ${i + 1} でエラー:`, error);
+                  if (i === proxyServices.length - 1) {
+                      throw new Error('すべてのプロキシサービスが利用できません。');
+                  }
+              }
+          }
+      }
+
+      // RSSフィードを取得
+      fetchWithFallback()
+          .then(xmlContent => {
+              console.log('取得したXMLコンテンツ:', xmlContent);
+              // XMLとして解析
+              const xmlData = new window.DOMParser().parseFromString(xmlContent, "text/xml");
+              
+              // すべての記事アイテム（<item>タグ）を取得
+              const items = xmlData.querySelectorAll("item");
+
+              // 表示するHTMLを格納する変数
+              let html = '<ul>';
+
+              // 取得したアイテムのうち、最初の4件だけをループ処理
+              // RSSフィードは通常、新しい順に並んでいるため、slice(0, 4)で最新の4件を取得できます
+              Array.from(items).slice(0, 4).forEach(item => {
+                  // 各アイテムからタイトルとリンクを取得
+                  const title = item.querySelector("title").textContent;
+                  const link = item.querySelector("link").textContent;                
+
+                  // リストアイテムとしてHTMLを組み立てる
+                  html += `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;                                    
+              });
+
+              html += '</ul>';
+
+              // 組み立てたHTMLをコンテナに挿入
+              postsContainer.innerHTML = html;
+          })
+          .catch(error => {
+              // エラーが発生した場合の処理
+              console.error('記事の取得中にエラーが発生しました:', error);
+              postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
+          });
     });
   </script>      
 
