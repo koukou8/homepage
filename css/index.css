@@ -206,7 +206,7 @@ h3 {
 }
 
 .text-line {
-  padding: 10px 0 10px 5%;
+  padding: 10px 0;
   position: relative;
   width: 60%;
   margin: 0 auto;
@@ -214,49 +214,59 @@ h3 {
 
 /* 要素全体にリンク */
 .text-line a {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: static;
+}
+
+.text-line ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.text-line li {
+  position: relative;
+  /*padding: 30px 30px;*/
+  border-bottom: 1px solid #ddd;
+}
+
+.text-line li:hover {
+  background-color: #EEEEEE;
+}
+
+.text-line li:last-child {
+  border-bottom: none;
+}
+
+.text-line li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
   height: 100%;
   width: 100%;
+  padding: 30px 30px;
+  border: none;
+  box-sizing: border-box;
 }
 
-.text-line p {
-  font-size: calc(100vw/80);;
-}
-
-.text-line:hover {
-  background-color: #EEEEEE;
-  font-weight: bold;
-}
-
-/* 矢印のスタイル */
-.text-line::before {
+/* 矢印をli要素に移動 */
+.text-line li::before {
   content: '→';
   position: absolute;
-  left: 85%;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
 
-/* ホバー時の矢印のスタイル */
-.text-line:hover::before {
+.text-line li:hover::before {
   transform: translate(10px, -50%);
 }
 
-.text-line::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: #000;
-}
-
-.text-line:first-child {
-  padding-top: 0;
+.text-line p {
+  font-size: calc(100vw/80);
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
 }
 
 .blog-button {
