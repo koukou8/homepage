@@ -15,3 +15,15 @@ https://motorogu-essays-in-idleness.com/
 ```
 <meta name="robots" content="noindex" />
 ```
+
+## 改修時の開発手順
+1. mainから作業ブランチfeature/を切って修正
+2. feature/ → mainのPR作成
+3. ローカルfeature/でnoindexを追加
+4. feature/ → main_stgのPR作成
+5. main_stgマージ
+6. Github Pages確認
+7. 問題なければローカルfeature/でnoindexを削除
+8. mainにpush
+9. mainマージ
+10. サーバーにアップロード
