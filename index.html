@@ -384,8 +384,25 @@
       fetchWithFallback()
           .then(xmlContent => {
               console.log('取得したXMLコンテンツ:', xmlContent);
+              
+              // PHPの警告メッセージなどがXMLの前に付加されている場合、それを除去
+              // <?xml または <rss から始まる部分を抽出
+              let cleanedXml = xmlContent;
+              const xmlStartIndex = xmlContent.indexOf('<?xml');
+              const rssStartIndex = xmlContent.indexOf('<rss');
+              
+              if (xmlStartIndex > 0) {
+                  // <?xml が0より後ろにある場合、その前のゴミデータを除去
+                  cleanedXml = xmlContent.substring(xmlStartIndex);
+                  console.log('XMLの前のゴミデータを除去しました');
+              } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
+                  // <?xml がなく、<rss が0より後ろにある場合
+                  cleanedXml = xmlContent.substring(rssStartIndex);
+                  console.log('RSSタグの前のゴミデータを除去しました');
+              }
+              
               // XMLとして解析
-              const xmlData = new window.DOMParser().parseFromString(xmlContent, "text/xml");
+              const xmlData = new window.DOMParser().parseFromString(cleanedXml, "text/xml");
               
               // すべての記事アイテム（<item>タグ）を取得
               const items = xmlData.querySelectorAll("item");
