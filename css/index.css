@@ -20,50 +20,6 @@ body {
   z-index: -1;
 }
 
-/* ヒーローセクション（h1メインキャッチ） */
-.hero-section {
-  background-color: #EEEEEE;
-  padding: 5% 0;
-  text-align: center;
-}
-
-.hero-content {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-content h1 {
-  margin: 0;
-  line-height: 1;
-}
-
-.hero-content .hero-tagline {
-  display: block;
-  color: #888;
-  font-size: clamp(0.9rem, 2vw, 1.3rem);
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  margin-bottom: 30px;
-}
-
-.hero-content .hero-brand {
-  display: block;
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  font-weight: lighter;
-  letter-spacing: 0.12em;
-  color: #ff7761;
-  line-height: 1.1;
-}
-
-.hero-content .hero-ampersand {
-  display: block;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: lighter;
-  color: #888;
-  margin: 15px 0;
-}
-
 header {
   box-sizing:border-box;
   position: fixed;
@@ -74,6 +30,16 @@ header {
   align-items: center;
   padding: 10px;
   z-index: 2;
+}
+
+/* ヘッダー内のh1（ロゴ用）のリセット */
+header h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: inherit;
+  font-weight: normal;
+  width: 40%;  /* 元々header aに設定されていた幅を維持 */
 }
 
 #logo {
@@ -126,6 +92,7 @@ h3 {
 
 /** サービスセクション **/
 .service-sec {
+  padding-top: 10%;
   box-sizing:border-box;
   text-align: center;
   position: relative;
@@ -459,34 +426,64 @@ h3 {
 }
 
 .location-sec .text-area {
-  width: 100%;
-  text-align: center;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 0 auto 40px;
 }
 
-.location-sec .text-block {
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 119, 97, 0.15);
+}
+
+.icon-wrapper {
+  flex-shrink: 0;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff7761 0%, #ff9988 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(255, 119, 97, 0.2);
 }
 
-.access-block {
-  margin-bottom: 20px;
+.info-content {
+  flex: 1;
+  text-align: left;
 }
 
-.location-sec .text-block span {
-  margin-right: 10px;
-  font-size: calc(100vw/70);
+.info-label {
+  display: block;
+  font-size: calc(100vw/80);
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
 }
 
-.location-sec .text-block p {
-  font-size: calc(100vw/70);
-}
-
-.location-sec .block {
-  width: calc(100vw/90);
-  height: calc(100vw/50);
-  background-color: #ff7761;
-  margin-right: 10px;
+.info-text {
+  font-size: calc(100vw/80);
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .map-area {
@@ -544,11 +541,6 @@ h3 {
   .video-container {
     height: 70vh;
   }
-
-  /* ヒーローセクション（タブレット対応） */
-  .hero-section {
-    padding: 8% 0;
-  }
 }
 
 @media (max-width: 600px) {
@@ -560,6 +552,10 @@ h3 {
     padding: 10px;
   }
 
+  header h1 {
+    width: 50%;  /* モバイルでは少し広めに */
+  }
+
   #logo {
     width: 90%;
   }
@@ -568,25 +564,6 @@ h3 {
     font-size: calc(100vw/50);
     margin-right: 5%;
     margin: 0 0 0 auto;
-  }
-
-  /* ヒーローセクション（モバイル対応） */
-  .hero-section {
-    padding: 10% 0;
-  }
-
-  .hero-content .hero-tagline {
-    font-size: clamp(0.75rem, 3.5vw, 1rem);
-    margin-bottom: 20px;
-  }
-
-  .hero-content .hero-brand {
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
-
-  .hero-content .hero-ampersand {
-    font-size: clamp(1rem, 4vw, 1.5rem);
-    margin: 10px 0;
   }
 
   /* 共通セクション */
@@ -678,12 +655,28 @@ h3 {
   }
 
   /* 店舗情報セクション */
-  .location-sec .text-block span {
-    font-size: calc(100vw/40);
+  .location-sec .text-area {
+    width: 90%;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
-  .location-sec .text-block p {
-    font-size: calc(100vw/40);
+
+  .info-card {
+    padding: 20px;
+  }
+
+  .icon-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .info-label {
+    font-size: calc(100vw/35);
+  }
+
+  .info-text {
+    font-size: calc(100vw/35);
   }
 
   /* フッター */
