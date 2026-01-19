@@ -1,6 +1,6 @@
 ## リンク
 ### stg環境
-https://koukou8.github.io/homepage/
+https://koukou8.github.io/stretch-strength-homepage/
 
 ### prod環境
 https://motorogu-essays-in-idleness.com/
