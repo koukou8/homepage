@@ -1,0 +1,56 @@
+name: Auto Merge to Staging
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+  merge-to-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get PR branch name
+        id: get-branch
+        run: echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+
+      - name: Merge to main_stg with noindex
+        run: |
+          # Fetch all branches
+          git fetch origin main_stg
+          git fetch origin ${{ steps.get-branch.outputs.branch }}
+
+          # Checkout main_stg
+          git checkout main_stg
+
+          # Merge the PR branch into main_stg
+          git merge origin/${{ steps.get-branch.outputs.branch }} --no-edit -m "Merge ${{ steps.get-branch.outputs.branch }} into main_stg (auto-merge)"
+
+          # Enable noindex by removing comment tags
+          sed -i 's/<!--<meta name="robots" content="noindex" \/>-->/<meta name="robots" content="noindex" \/>/' index.html
+          sed -i 's/<!--<meta name="robots" content="noindex" \/>-->/<meta name="robots" content="noindex" \/>/' service.html
+
+          # Check if there are changes to commit
+          if git diff --quiet; then
+            echo "No noindex changes needed"
+          else
+            git add index.html service.html
+            git commit -m "auto: Enable noindex for staging environment"
+          fi
+
+          # Push to main_stg
+          git push origin main_stg
