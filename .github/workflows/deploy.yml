@@ -23,6 +23,7 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            ++/.claude/**
             **/docs/**
             **/*.md
             **/.DS_Store
