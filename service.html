@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<meta name="robots" content="noindex" />-->
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" type="text/css" href="css/service.css?v=20260107">
+  <link rel="stylesheet" type="text/css" href="css/service.css?v=20260126">
   
   <!-- 構造化データ (JSON-LD) - サービス・料金プラン -->
   <script type="application/ld+json">
@@ -455,59 +455,14 @@
     // ページの読み込み後に実行
     window.addEventListener('DOMContentLoaded', function () {
       const header = document.querySelector('header');
-      const headerLink = document.querySelectorAll('header a');
-      const messageContainerHeight = document.getElementById('message-area').clientHeight
-      const programTitle = document.getElementById('program-title');
-      const programContainerHeight = document.getElementById('program-area').clientHeight
-      const planTitle = document.getElementById('plan-title');
-      const planContainerHeight = document.getElementById('plan-area').clientHeight
-      const sessionTitle = document.getElementById('session-title');
-      const sessionContainerHeight = document.getElementById('session-area').clientHeight
-      const reservationTitle = document.getElementById('reservation-title');
-      const reservationContainerHeight = document.getElementById('reservation-area').clientHeight
-      const profileTitle = document.getElementById('profile-title');
-      const profileContainerHeight = document.getElementById('profile-area').clientHeight
-      const qaTitle = document.getElementById('qa-title');
-      const qaContainerHeight = document.getElementById('qa-area').clientHeight
 
       // スクロールイベントを監視
       window.addEventListener('scroll', function () {
-        if (window.scrollY > messageContainerHeight / 10) {
-          // スクロール位置がvideo-containerより大きい場合、背景色を変更
-          header.style.transition = 'background-color 0.3s';
-          header.style.backgroundColor = 'black';
-          // aタグのテキストカラーを白色に変更
-          for (var i = 0; i < headerLink.length; i++) {
-            headerLink[i].style.color = "white";
-          }
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
         } else {
-          // スクロール位置がvideo-container以下の場合、背景色を透明にする
-          header.style.transition = 'background-color 0.3s';
-          header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-          for (var i = 0; i < headerLink.length; i++) {
-            headerLink[i].style.color = "black";
-          }
+          header.classList.remove('scrolled');
         }
-
-        if (window.scrollY > messageContainerHeight * 0.8) {
-          programTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (messageContainerHeight + programContainerHeight) * 0.8) {
-          planTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (messageContainerHeight + programContainerHeight + planContainerHeight) * 1) {
-          sessionTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (messageContainerHeight + programContainerHeight + planContainerHeight + sessionContainerHeight) * 1) {
-          reservationTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (messageContainerHeight + programContainerHeight + planContainerHeight + sessionContainerHeight + reservationContainerHeight) * 1) {
-          profileTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (messageContainerHeight + programContainerHeight + planContainerHeight + sessionContainerHeight + reservationContainerHeight + profileContainerHeight) * 1) {
-          qaTitle.style.borderBottomColor = '#ff7761';
-        }
-
       });
     });
   </script>

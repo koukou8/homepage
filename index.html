@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<meta name="robots" content="noindex" />-->
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260107">
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260126">
   
   <!-- 構造化データ (JSON-LD) -->
   <script type="application/ld+json">
@@ -313,39 +313,13 @@
     // ページの読み込み後に実行
     window.addEventListener('DOMContentLoaded', function () {
       const header = document.querySelector('header');
-      const videoContainerHeight = document.getElementById('video-area').clientHeight
-      const serviceTitle = document.getElementById('service-title');
-      const serviceContainerHeight = document.getElementById('service-area').clientHeight
-      const blogTitle = document.getElementById('blog-title');
-      const blogContainerHeight = document.getElementById('blog-area').clientHeight
-      const phraseContainerHeight = document.getElementById('phrase-area').clientHeight
-      const contactTitle = document.getElementById('contact-title');
-      const contactContainerHeight = document.getElementById('contact-area').clientHeight
-      const locationTitle = document.getElementById('location-title');
 
       // スクロールイベントを監視
       window.addEventListener('scroll', function () {
-        if (window.scrollY > videoContainerHeight) {
-          // スクロール位置がvideo-containerより大きい場合、背景色を変更
-          header.style.transition = 'background-color 0.3s';
-          header.style.backgroundColor = 'black';
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
         } else {
-          // スクロール位置がvideo-container以下の場合、背景色を透明にする
-          header.style.transition = 'background-color 0.3s';
-          header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        }
-
-        if (window.scrollY > videoContainerHeight * 0.8) {
-          serviceTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (videoContainerHeight + serviceContainerHeight) * 0.8) {
-          blogTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (videoContainerHeight + serviceContainerHeight + blogContainerHeight + phraseContainerHeight) * 1) {
-          contactTitle.style.borderBottomColor = '#ff7761';
-        }
-        if (window.scrollY > (videoContainerHeight + serviceContainerHeight + blogContainerHeight + phraseContainerHeight + contactContainerHeight) * 1) {
-          locationTitle.style.borderBottomColor = '#ff7761';
+          header.classList.remove('scrolled');
         }
       });
 
