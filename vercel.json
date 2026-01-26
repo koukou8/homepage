@@ -3,6 +3,7 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": ".",
+  "ignoreCommand": "[[ \"$VERCEL_GIT_COMMIT_REF\" != design-renewal/* ]]",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
