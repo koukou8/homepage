@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <title>奥沢・自由が丘のパーソナルジム｜ストレッチ＆マッサージ対応｜STRETCH&STRENGTH</title>
@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<meta name="robots" content="noindex" />-->
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260126">
-  
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260128">
+
   <!-- 構造化データ (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -116,7 +116,7 @@
     ]
   }
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -140,6 +140,7 @@
 </head>
 <body>
 
+  <!-- Hero Section -->
   <div class="video-container" id="video-area">
     <video id="background-video" src="video/STRETCH&STRENGTH PV.mp4" loop autoplay muted playsinline></video>
     <header>
@@ -155,116 +156,143 @@
         </ul>
       </nav>
     </header>
+    <div class="hero-content">
+      <h2>あなたの習慣に、<br>フィットネスを。</h2>
+      <p>完全個室パーソナルジム</p>
+    </div>
   </div>
 
+  <!-- Service Section -->
   <section class="service-sec" id="service-area">
-    <h2 id="service-title">SERVICE</h2>
-    <h3>施術内容</h3>
-    <div class="image-container">
-      <img src="images/gym.jpg" alt="Service Image" id="service-image">
-    </div>
-    <!-- 画像切り替え部分 -->
-    <div class="image-switcher">
-      <button onclick="changeImage('images/gym.jpg', this)"></button>
-      <button onclick="changeImage('images/gym-second.jpg', this)"></button>
-      <button onclick="changeImage('images/gym-third.jpg', this)"></button>
-    </div>
-    <div class="service-intro">
-        <p>完全個室ストレッチで姿勢改善<br>パーソナルトレーニング<br>着替え不要、サプリメント&シャワー完備</p>
-        <a href="service.html" class="detail-button slide">サービスの詳細はこちら</a>
+    <div class="section-inner">
+      <div class="service-grid">
+        <div class="service-image-area fade-in">
+          <div class="image-container">
+            <img src="images/gym.jpg" alt="STRETCH&STRENGTH ジム内装" id="service-image">
+          </div>
+          <div class="image-switcher">
+            <button onclick="changeImage('images/gym.jpg', this)" class="active"></button>
+            <button onclick="changeImage('images/gym-second.jpg', this)"></button>
+            <button onclick="changeImage('images/gym-third.jpg', this)"></button>
+          </div>
+        </div>
+        <div class="service-content">
+          <p class="label fade-in">Service</p>
+          <h2 class="fade-in fade-in-delay-1">ストレッチ × トレーニング</h2>
+          <p class="fade-in fade-in-delay-2">完全個室で、あなただけの空間。<br>ストレッチで身体を整え、トレーニングで強くする。<br>着替え不要、シャワー・サプリメント完備。</p>
+          <a href="service.html" class="link-button fade-in fade-in-delay-3">サービスの詳細</a>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Blog Section -->
   <section class="blog-sec" id="blog-area">
-    <h2 id="blog-title">BLOG</h2>
-    <h3>ブログ</h3>
-    <div id="posts-container" class="text-line">
-      <p>記事を読み込んでいます...</p>
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="label fade-in">Blog</p>
+        <h2 class="fade-in fade-in-delay-1">最新の投稿</h2>
+      </div>
+      <div id="posts-container" class="fade-in fade-in-delay-2">
+        <p>記事を読み込んでいます...</p>
+      </div>
+      <div class="blog-button fade-in fade-in-delay-3">
+        <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/">すべての記事を見る</a>
+      </div>
     </div>
-    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button">Post List</a>
   </section>
 
-  <section class="phrase-sec" id="phrase-area">
+  <!-- Phrase Section -->
+  <section class="phrase-sec fade-in" id="phrase-area">
     あなたの習慣に、フィットネスを。
   </section>
 
+  <!-- Contact Section -->
   <section class="contact-sec" id="contact-area">
-    <h2 id="contact-title">CONTACT</h2>
-    <h3>お問い合わせ</h3>
-    <div class="images-top">
-      <div class="sns-container">
-        <p class="small-word">ジムの最新情報</p>
-        <div class="images-top-container">
-          <a href="https://www.instagram.com/s.s_ebisu/?hl=ja"><img src="images/instagram.jpg" alt="Image 1"></a>
-        </div>      
-        <p class="sns-name">Instagram</p>
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="label fade-in">Contact</p>
+        <h2 class="fade-in fade-in-delay-1">お問い合わせ</h2>
       </div>
-      <div class="sns-container line">
-        <p class="small-word">ご予約はこちらから</p>
-        <div class="images-top-container">
-          <a href="https://lin.ee/CbDa0gM"><img src="images/line.jpg" alt="Image 2"></a>
+      <div class="contact-grid">
+        <a href="https://www.instagram.com/s.s_ebisu/?hl=ja" class="contact-card fade-in fade-in-delay-1">
+          <p class="small-word">ジムの最新情報</p>
+          <div class="sns-icon">
+            <img src="images/instagram.jpg" alt="Instagram">
+          </div>
+          <p class="sns-name">Instagram</p>
+        </a>
+        <a href="https://lin.ee/CbDa0gM" class="contact-card fade-in fade-in-delay-2">
+          <p class="small-word">ご予約はこちらから</p>
+          <div class="sns-icon">
+            <img src="images/line.jpg" alt="LINE">
+          </div>
+          <p class="sns-name">LINE</p>
+        </a>
+      </div>
+      <div class="contact-sub fade-in fade-in-delay-3">
+        <div class="contact-sub-item">
+          <a href="https://x.com/motonori89?lang=ja">
+            <img src="images/x.jpg" alt="X">
+          </a>
         </div>
-        <p class="sns-name">official LINE</p>
-      </div>
-    </div>
-    <div class="images-bottom">
-      <div class="sns-container">
-        <div class="image-bottom-container">
-          <a href="https://x.com/motonori89?lang=ja"><img src="images/x.jpg" alt="Image 3"></a>
-        </div>        
-        <!--<p class="sns-name">X</p>-->
-      </div>
-      <div class="sns-container">
-        <div class="image-bottom-container">
-          <a href="https://www.youtube.com/@moto.89"><img src="images/youtube.jpg" alt="Image 4"></a>
-        </div>        
-        <!--<p class="sns-name">Youtube</p>-->
+        <div class="contact-sub-item">
+          <a href="https://www.youtube.com/@moto.89">
+            <img src="images/youtube.jpg" alt="YouTube">
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Location Section -->
   <section class="location-sec" id="location-area">
-    <h2 id="location-title">LOCATION</h2>
-    <h3>店舗情報</h3>
-    <div class="text-area">
-      <div class="info-card">
-        <div class="icon-wrapper">
-          <div class="icon-circle">
-            <img src="icons/map-pin.svg" alt="住所アイコン" style="width: 24px; height: 24px;">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="label fade-in">Location</p>
+        <h2 class="fade-in fade-in-delay-1">店舗情報</h2>
+      </div>
+      <div class="location-info">
+        <div class="info-card fade-in fade-in-delay-1">
+          <div class="icon-wrapper">
+            <div class="icon-circle">
+              <img src="icons/map-pin.svg" alt="住所">
+            </div>
+          </div>
+          <div class="info-content">
+            <span class="info-label">住所</span>
+            <p class="info-text">東京都世田谷区奥沢1-25-4<br>ARK HOUSE自由が丘201</p>
           </div>
         </div>
-        <div class="info-content">
-          <span class="info-label">住所</span>
-          <p class="info-text">東京都世田谷区奥沢1-25-4<br>ARK HOUSE自由が丘201</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="icon-wrapper">
-          <div class="icon-circle">
-            <img src="icons/walk-man.svg" alt="アクセスアイコン" style="width: 24px; height: 24px;">
+        <div class="info-card fade-in fade-in-delay-2">
+          <div class="icon-wrapper">
+            <div class="icon-circle">
+              <img src="icons/walk-man.svg" alt="アクセス">
+            </div>
+          </div>
+          <div class="info-content">
+            <span class="info-label">アクセス</span>
+            <p class="info-text">奥沢駅徒歩5分 / 田園調布駅徒歩10分<br>自由が丘駅徒歩15分</p>
           </div>
         </div>
-        <div class="info-content">
-          <span class="info-label">アクセス</span>
-          <p class="info-text">奥沢駅徒歩5分/田園調布駅徒歩10分<br>自由が丘駅徒歩15分</p>
-        </div>
       </div>
-    </div>
-    <div class="map-area">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12519.408432730104!2d139.71182905001558!3d35.6432904766393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b53d275d47f%3A0x7b9b1a5e4a5ddcd5!2zU1RSRU5HVEgmU1RSRVRDSCjjgrnjg4jjg6zjg7PjgrDjgrnjgqLjg7Pjg4njgrnjg4jjg6zjg4Pjg4EpIOaBteavlOWvvw!5e0!3m2!1sja!2sjp!4v1704579138520!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-area fade-in fade-in-delay-3">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12519.408432730104!2d139.71182905001558!3d35.6432904766393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b53d275d47f%3A0x7b9b1a5e4a5ddcd5!2zU1RSRU5HVEgmU1RSRVRDSCjjgrnjg4jjg6zjg7PjgrDjgrnjgqLjg7Pjg4njgrnjg4jjg6zjg4Pjg4EpIOaBteavlOWvvw!5e0!3m2!1sja!2sjp!4v1704579138520!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-links">
-      <div><a href="#service-area">SERVICE</a></div>
-      <div><a href="service.html#plan-area">PLAN</a></div>
-      <div><a href="#blog-area">BLOG</a></div>
-      <div><a href="service.html#reservation-area">RESERVATION</a></div>
-      <div><a href="#contact-area">CONTACT</a></div>
-      <div><a href="service.html#profile-area">TRAINER</a></div>
-      <div><a href="#location-area">LOCATION</a></div>
-      <div><a href="service.html#qa-area">Q&A</a></div>
+      <a href="#service-area">SERVICE</a>
+      <a href="service.html#plan-area">PLAN</a>
+      <a href="#blog-area">BLOG</a>
+      <a href="service.html#reservation-area">RESERVATION</a>
+      <a href="#contact-area">CONTACT</a>
+      <a href="service.html#profile-area">TRAINER</a>
+      <a href="#location-area">LOCATION</a>
+      <a href="service.html#qa-area">Q&A</a>
     </div>
     <div class="policy-info">
       <p><a href="https://motorogu-essays-in-idleness.com/privacypolicy/">プライバシーポリシー</a></p>
@@ -272,49 +300,27 @@
       <p><a href="https://motorogu-essays-in-idleness.com/104-2/">お問い合わせ</a></p>
     </div>
     <div class="footer-bottom">
-      © 2024 STRETCH&STRENGTH
+      &copy; 2024 STRETCH&STRENGTH
     </div>
   </footer>
 
   <script>
-    // スライド写真の処理
+    // 画像切り替え処理
     function changeImage(newImageSrc, button) {
-      console.log(newImageSrc)
-      console.log(button)
-      // 画像を変更
       document.getElementById('service-image').src = newImageSrc;
-    
-      // すべてのボタンを白に設定
+
       document.querySelectorAll('.image-switcher button').forEach(function(btn) {
-        btn.style.backgroundColor = 'white';
-        btn.style.color = 'black';
+        btn.classList.remove('active');
       });
-    
-      // 選択されたボタンをピンクに設定
-      button.style.backgroundColor = '#ff7761';
-      button.style.color = '#ff7761';
+
+      button.classList.add('active');
     }
 
-    // ページ読み込み時に最初のボタンのクリックをシミュレート
-    window.onload = function() {
-      // 最初の画像の高さを取得
-      var firstImageHeight = document.querySelector('.image-container img').clientHeight;
-
-      // すべての画像に最初の画像の高さを設定
-      document.querySelectorAll('.image-container img').forEach(function(img) {
-        img.style.height = firstImageHeight + 'px';
-      });
-
-      // 最初のボタンのクリックをシミュレート
-      var firstButton = document.querySelector('.image-switcher button');
-      changeImage('images/gym.jpg', firstButton);
-    };
-
-    // ページの読み込み後に実行
+    // ページ読み込み時の処理
     window.addEventListener('DOMContentLoaded', function () {
       const header = document.querySelector('header');
 
-      // スクロールイベントを監視
+      // スクロールでヘッダー背景を変更
       window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
           header.classList.add('scrolled');
@@ -323,93 +329,79 @@
         }
       });
 
-      // 対象のブログ著者のRSSフィードURL
-      // WordPressの場合、著者ページの末尾に /feed/ をつけるとRSSフィードを取得できることが一般的です
-      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
-      
-      // 複数のCORSプロキシサービスを定義（フォールバック機能）
-      const proxyServices = [
-          'https://corsproxy.io/?' + encodeURIComponent(feedUrl)       
-      ];
+      // スクロールアニメーション
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
 
-      // 記事を表示するコンテナ要素を取得
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // ブログ記事の取得
+      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
+      const proxyServices = [
+        'https://corsproxy.io/?' + encodeURIComponent(feedUrl)
+      ];
       const postsContainer = document.getElementById('posts-container');
 
-      // プロキシサービスを順番に試す関数
       async function fetchWithFallback() {
-          for (let i = 0; i < proxyServices.length; i++) {
-              try {
-                  console.log(`プロキシサービス ${i + 1} を試行中: ${proxyServices[i]}`);
-                  const response = await fetch(proxyServices[i]);
-                  
-                  if (!response.ok) {
-                      throw new Error(`HTTP error! status: ${response.status}`);
-                  }
-                  
-                  return await response.text();
-
-              } catch (error) {
-                  console.log(`プロキシサービス ${i + 1} でエラー:`, error);
-                  if (i === proxyServices.length - 1) {
-                      throw new Error('すべてのプロキシサービスが利用できません。');
-                  }
-              }
+        for (let i = 0; i < proxyServices.length; i++) {
+          try {
+            const response = await fetch(proxyServices[i]);
+            if (!response.ok) {
+              throw new Error('HTTP error! status: ' + response.status);
+            }
+            return await response.text();
+          } catch (error) {
+            if (i === proxyServices.length - 1) {
+              throw new Error('すべてのプロキシサービスが利用できません。');
+            }
           }
+        }
       }
 
-      // RSSフィードを取得
       fetchWithFallback()
-          .then(xmlContent => {
-              console.log('取得したXMLコンテンツ:', xmlContent);
-              
-              // PHPの警告メッセージなどがXMLの前に付加されている場合、それを除去
-              // <?xml または <rss から始まる部分を抽出
-              let cleanedXml = xmlContent;
-              const xmlStartIndex = xmlContent.indexOf('<?xml');
-              const rssStartIndex = xmlContent.indexOf('<rss');
-              
-              if (xmlStartIndex > 0) {
-                  // <?xml が0より後ろにある場合、その前のゴミデータを除去
-                  cleanedXml = xmlContent.substring(xmlStartIndex);
-                  console.log('XMLの前のゴミデータを除去しました');
-              } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
-                  // <?xml がなく、<rss が0より後ろにある場合
-                  cleanedXml = xmlContent.substring(rssStartIndex);
-                  console.log('RSSタグの前のゴミデータを除去しました');
-              }
-              
-              // XMLとして解析
-              const xmlData = new window.DOMParser().parseFromString(cleanedXml, "text/xml");
-              
-              // すべての記事アイテム（<item>タグ）を取得
-              const items = xmlData.querySelectorAll("item");
+        .then(function(xmlContent) {
+          let cleanedXml = xmlContent;
+          const xmlStartIndex = xmlContent.indexOf('<?xml');
+          const rssStartIndex = xmlContent.indexOf('<rss');
 
-              // 表示するHTMLを格納する変数
-              let html = '<ul>';
+          if (xmlStartIndex > 0) {
+            cleanedXml = xmlContent.substring(xmlStartIndex);
+          } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
+            cleanedXml = xmlContent.substring(rssStartIndex);
+          }
 
-              // 取得したアイテムのうち、最初の4件だけをループ処理
-              // RSSフィードは通常、新しい順に並んでいるため、slice(0, 4)で最新の4件を取得できます
-              Array.from(items).slice(0, 4).forEach(item => {
-                  // 各アイテムからタイトルとリンクを取得
-                  const title = item.querySelector("title").textContent;
-                  const link = item.querySelector("link").textContent;                
+          const xmlData = new window.DOMParser().parseFromString(cleanedXml, "text/xml");
+          const items = xmlData.querySelectorAll("item");
+          let html = '<ul>';
 
-                  // リストアイテムとしてHTMLを組み立てる
-                  html += `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;                                    
-              });
-
-              html += '</ul>';
-
-              // 組み立てたHTMLをコンテナに挿入
-              postsContainer.innerHTML = html;
-          })
-          .catch(error => {
-              // エラーが発生した場合の処理
-              console.error('記事の取得中にエラーが発生しました:', error);
-              postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
+          Array.from(items).slice(0, 4).forEach(function(item) {
+            const title = item.querySelector("title").textContent;
+            const link = item.querySelector("link").textContent;
+            html += '<li><a href="' + link + '" target="_blank" rel="noopener noreferrer">' + title + '</a></li>';
           });
+
+          html += '</ul>';
+          postsContainer.innerHTML = html;
+        })
+        .catch(function(error) {
+          console.error('記事の取得中にエラーが発生しました:', error);
+          postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
+        });
     });
-  </script>      
+  </script>
 
 </body>
 </html>
