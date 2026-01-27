@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<meta name="robots" content="noindex" />-->
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260126">
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260128">
   
   <!-- 構造化データ (JSON-LD) -->
   <script type="application/ld+json">
@@ -146,7 +146,12 @@
       <h1>
         <a href="index.html"><img id="logo" src="images/logo.jpg" alt="STRETCH&STRENGTH"></a>
       </h1>
-      <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="nav-menu">
         <ul>
           <li><a href="#service-area">SERVICE</a></li>
           <li><a href="service.html#plan-area">PLAN</a></li>
@@ -155,51 +160,51 @@
         </ul>
       </nav>
     </header>
+    <div class="scroll-indicator"></div>
   </div>
 
   <section class="service-sec" id="service-area">
-    <h2 id="service-title">SERVICE</h2>
-    <h3>施術内容</h3>
-    <div class="image-container">
+    <h2 id="service-title" class="fade-in">SERVICE</h2>
+    <h3 class="fade-in delay-1">施術内容</h3>
+    <div class="image-container scale-in delay-2">
       <img src="images/gym.jpg" alt="Service Image" id="service-image">
     </div>
-    <!-- 画像切り替え部分 -->
-    <div class="image-switcher">
+    <div class="image-switcher fade-in delay-3">
       <button onclick="changeImage('images/gym.jpg', this)"></button>
       <button onclick="changeImage('images/gym-second.jpg', this)"></button>
       <button onclick="changeImage('images/gym-third.jpg', this)"></button>
     </div>
-    <div class="service-intro">
+    <div class="service-intro fade-in delay-4">
         <p>完全個室ストレッチで姿勢改善<br>パーソナルトレーニング<br>着替え不要、サプリメント&シャワー完備</p>
         <a href="service.html" class="detail-button slide">サービスの詳細はこちら</a>
     </div>
   </section>
 
   <section class="blog-sec" id="blog-area">
-    <h2 id="blog-title">BLOG</h2>
-    <h3>ブログ</h3>
-    <div id="posts-container" class="text-line">
+    <h2 id="blog-title" class="fade-in">BLOG</h2>
+    <h3 class="fade-in delay-1">ブログ</h3>
+    <div id="posts-container" class="text-line fade-in delay-2">
       <p>記事を読み込んでいます...</p>
     </div>
-    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button">Post List</a>
+    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button fade-in delay-3">Post List</a>
   </section>
 
   <section class="phrase-sec" id="phrase-area">
-    あなたの習慣に、フィットネスを。
+    <span class="fade-in">あなたの習慣に、フィットネスを。</span>
   </section>
 
   <section class="contact-sec" id="contact-area">
-    <h2 id="contact-title">CONTACT</h2>
-    <h3>お問い合わせ</h3>
+    <h2 id="contact-title" class="fade-in">CONTACT</h2>
+    <h3 class="fade-in delay-1">お問い合わせ</h3>
     <div class="images-top">
-      <div class="sns-container">
+      <div class="sns-container slide-in-left delay-2">
         <p class="small-word">ジムの最新情報</p>
         <div class="images-top-container">
           <a href="https://www.instagram.com/s.s_ebisu/?hl=ja"><img src="images/instagram.jpg" alt="Image 1"></a>
-        </div>      
+        </div>
         <p class="sns-name">Instagram</p>
       </div>
-      <div class="sns-container line">
+      <div class="sns-container line slide-in-right delay-2">
         <p class="small-word">ご予約はこちらから</p>
         <div class="images-top-container">
           <a href="https://lin.ee/CbDa0gM"><img src="images/line.jpg" alt="Image 2"></a>
@@ -207,27 +212,25 @@
         <p class="sns-name">official LINE</p>
       </div>
     </div>
-    <div class="images-bottom">
+    <div class="images-bottom fade-in delay-3">
       <div class="sns-container">
         <div class="image-bottom-container">
           <a href="https://x.com/motonori89?lang=ja"><img src="images/x.jpg" alt="Image 3"></a>
-        </div>        
-        <!--<p class="sns-name">X</p>-->
+        </div>
       </div>
       <div class="sns-container">
         <div class="image-bottom-container">
           <a href="https://www.youtube.com/@moto.89"><img src="images/youtube.jpg" alt="Image 4"></a>
-        </div>        
-        <!--<p class="sns-name">Youtube</p>-->
+        </div>
       </div>
     </div>
   </section>
 
   <section class="location-sec" id="location-area">
-    <h2 id="location-title">LOCATION</h2>
-    <h3>店舗情報</h3>
+    <h2 id="location-title" class="fade-in">LOCATION</h2>
+    <h3 class="fade-in delay-1">店舗情報</h3>
     <div class="text-area">
-      <div class="info-card">
+      <div class="info-card slide-in-left delay-2">
         <div class="icon-wrapper">
           <div class="icon-circle">
             <img src="icons/map-pin.svg" alt="住所アイコン" style="width: 24px; height: 24px;">
@@ -238,7 +241,7 @@
           <p class="info-text">東京都世田谷区奥沢1-25-4<br>ARK HOUSE自由が丘201</p>
         </div>
       </div>
-      <div class="info-card">
+      <div class="info-card slide-in-right delay-2">
         <div class="icon-wrapper">
           <div class="icon-circle">
             <img src="icons/walk-man.svg" alt="アクセスアイコン" style="width: 24px; height: 24px;">
@@ -250,7 +253,7 @@
         </div>
       </div>
     </div>
-    <div class="map-area">
+    <div class="map-area scale-in delay-3">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12519.408432730104!2d139.71182905001558!3d35.6432904766393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b53d275d47f%3A0x7b9b1a5e4a5ddcd5!2zU1RSRU5HVEgmU1RSRVRDSCjjgrnjg4jjg6zjg7PjgrDjgrnjgqLjg7Pjg4njgrnjg4jjg6zjg4Pjg4EpIOaBteavlOWvvw!5e0!3m2!1sja!2sjp!4v1704579138520!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
@@ -279,40 +282,58 @@
   <script>
     // スライド写真の処理
     function changeImage(newImageSrc, button) {
-      console.log(newImageSrc)
-      console.log(button)
-      // 画像を変更
-      document.getElementById('service-image').src = newImageSrc;
-    
-      // すべてのボタンを白に設定
+      const img = document.getElementById('service-image');
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.98)';
+
+      setTimeout(() => {
+        img.src = newImageSrc;
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      }, 200);
+
+      // すべてのボタンのactiveクラスを削除
       document.querySelectorAll('.image-switcher button').forEach(function(btn) {
-        btn.style.backgroundColor = 'white';
-        btn.style.color = 'black';
+        btn.classList.remove('active');
+        btn.style.backgroundColor = '';
       });
-    
-      // 選択されたボタンをピンクに設定
-      button.style.backgroundColor = '#ff7761';
-      button.style.color = '#ff7761';
+
+      // 選択されたボタンにactiveクラスを追加
+      button.classList.add('active');
     }
 
     // ページ読み込み時に最初のボタンのクリックをシミュレート
     window.onload = function() {
-      // 最初の画像の高さを取得
-      var firstImageHeight = document.querySelector('.image-container img').clientHeight;
-
-      // すべての画像に最初の画像の高さを設定
-      document.querySelectorAll('.image-container img').forEach(function(img) {
-        img.style.height = firstImageHeight + 'px';
-      });
-
       // 最初のボタンのクリックをシミュレート
       var firstButton = document.querySelector('.image-switcher button');
-      changeImage('images/gym.jpg', firstButton);
+      if (firstButton) {
+        firstButton.classList.add('active');
+      }
     };
 
     // ページの読み込み後に実行
     window.addEventListener('DOMContentLoaded', function () {
       const header = document.querySelector('header');
+      const menuToggle = document.getElementById('menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      // ハンバーガーメニューの処理
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+          menuToggle.classList.toggle('active');
+          navMenu.classList.toggle('active');
+          document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // ナビリンクをクリックしたらメニューを閉じる
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
       // スクロールイベントを監視
       window.addEventListener('scroll', function () {
@@ -321,6 +342,26 @@
         } else {
           header.classList.remove('scrolled');
         }
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+        observer.observe(el);
       });
 
       // 対象のブログ著者のRSSフィードURL
