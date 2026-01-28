@@ -556,6 +556,76 @@ a {
 }
 
 /* ===================================
+   Contact
+   =================================== */
+.contact {
+  padding: var(--section-padding) 24px;
+  background: var(--cream);
+}
+
+.contact-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--charcoal-light);
+  margin-bottom: 48px;
+}
+
+.contact-sns {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.sns-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--beige);
+  border: 1px solid var(--beige-dark);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  transition: var(--transition);
+}
+
+.sns-link:hover {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--white);
+}
+
+.sns-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sns-link.sns-line {
+  background: #06C755;
+  border-color: #06C755;
+  color: var(--white);
+}
+
+.sns-link.sns-line:hover {
+  background: #05a847;
+  border-color: #05a847;
+}
+
+/* ===================================
    Footer
    =================================== */
 .footer {
@@ -814,6 +884,19 @@ a {
   .cta-button {
     padding: 16px 40px;
     font-size: 13px;
+  }
+
+  .contact-sns {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .sns-link {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 12px 24px;
   }
 
   .footer {
