@@ -1,14 +1,18 @@
 /* ===================================
-   STRETCH&STRENGTH - Minimal Design
+   STRETCH&STRENGTH - Warm & Friendly Design
    =================================== */
 
 :root {
-  --black: #000;
-  --dark: #111;
-  --gray: #888;
-  --gray-light: #e5e5e5;
+  --primary: #c4a574;
+  --primary-light: #e8dcc8;
+  --primary-dark: #9a7b4f;
+  --brown: #5c4a3d;
+  --brown-light: #7a6555;
+  --text: #3d3d3d;
+  --text-light: #6b6b6b;
+  --cream: #faf8f5;
   --white: #fff;
-  --bg: #fafafa;
+  --border: #e8e4de;
 }
 
 * {
@@ -22,10 +26,10 @@ html {
 }
 
 body {
-  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", sans-serif;
-  color: var(--black);
-  background: var(--white);
-  line-height: 1.8;
+  font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", "Yu Gothic", sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.9;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -35,12 +39,12 @@ a {
 }
 
 /* ===================================
-   Scroll Animation
+   Animation
    =================================== */
 .fade-in {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
@@ -60,14 +64,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 48px;
-  transition: background 0.4s, padding 0.4s;
+  padding: 20px 40px;
+  transition: all 0.4s ease;
 }
 
 header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(250, 248, 245, 0.95);
   backdrop-filter: blur(10px);
-  padding: 16px 48px;
+  box-shadow: 0 2px 20px rgba(92, 74, 61, 0.08);
 }
 
 header h1 {
@@ -75,33 +79,32 @@ header h1 {
 }
 
 #logo {
-  height: 40px;
+  height: 44px;
   transition: opacity 0.3s;
 }
 
 #logo:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 nav ul {
   display: flex;
-  gap: 48px;
+  gap: 36px;
   list-style: none;
 }
 
 nav a {
   font-size: 13px;
-  letter-spacing: 0.1em;
   color: var(--white);
   transition: opacity 0.3s;
 }
 
 header.scrolled nav a {
-  color: var(--black);
+  color: var(--brown);
 }
 
 nav a:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* ===================================
@@ -110,6 +113,7 @@ nav a:hover {
 .hero {
   position: relative;
   height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +132,11 @@ nav a:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    to bottom,
+    rgba(92, 74, 61, 0.3) 0%,
+    rgba(92, 74, 61, 0.5) 100%
+  );
 }
 
 .hero-content {
@@ -136,438 +144,521 @@ nav a:hover {
   z-index: 1;
   text-align: center;
   color: var(--white);
+  padding: 0 20px;
+}
+
+.hero-catch {
+  font-size: clamp(14px, 2vw, 16px);
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 .hero-title {
-  font-size: clamp(32px, 7vw, 72px);
+  font-size: clamp(28px, 6vw, 52px);
   font-weight: 500;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: 32px;
 }
 
-.hero-sub {
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  opacity: 0.8;
+.hero-message {
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 2;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.scroll-indicator {
+.scroll-down {
   position: absolute;
-  bottom: 48px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
   color: var(--white);
   font-size: 11px;
-  letter-spacing: 0.15em;
-  opacity: 0.6;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.scroll-indicator::after {
+.scroll-down::after {
   content: '';
-  display: block;
   width: 1px;
-  height: 48px;
+  height: 40px;
   background: var(--white);
-  margin: 16px auto 0;
-  animation: scroll 2s infinite;
+  animation: scrollLine 1.5s ease infinite;
 }
 
-@keyframes scroll {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+@keyframes scrollLine {
+  0% { transform: scaleY(0); opacity: 0; }
+  50% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0); opacity: 0; }
 }
 
 /* ===================================
    Section Common
    =================================== */
 .section {
-  padding: 160px 48px;
+  padding: 100px 40px;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .section-label {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--gray);
-  margin-bottom: 24px;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  padding: 6px 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .section-title {
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(24px, 4vw, 32px);
   font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  margin-bottom: 32px;
+  color: var(--brown);
+  line-height: 1.5;
 }
 
-.section-text {
+.section-lead {
   font-size: 15px;
-  color: var(--gray);
+  color: var(--text-light);
+  margin-top: 20px;
   line-height: 2;
-  max-width: 480px;
+}
+
+/* ===================================
+   Message Section
+   =================================== */
+.message {
+  background: var(--white);
+  text-align: center;
+}
+
+.message-box {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background: var(--cream);
+  border-radius: 24px;
+}
+
+.message-text {
+  font-size: 16px;
+  line-height: 2.2;
+  color: var(--text);
+}
+
+.message-text strong {
+  color: var(--brown);
+}
+
+.message-sign {
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--text-light);
 }
 
 /* ===================================
    About Section
    =================================== */
 .about {
+  background: var(--white);
+}
+
+.about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 120px;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 60px;
   align-items: center;
 }
 
 .about-image {
-  position: relative;
-  aspect-ratio: 4/5;
+  border-radius: 20px;
   overflow: hidden;
 }
 
 .about-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s ease;
-}
-
-.about-image:hover img {
-  transform: scale(1.03);
+  height: auto;
+  display: block;
 }
 
 .about-content {
-  padding-right: 48px;
+  padding: 20px 0;
 }
 
-/* ===================================
-   Features Section
-   =================================== */
-.features {
-  background: var(--bg);
+.about-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
-.features-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.features-header {
-  text-align: center;
-  margin-bottom: 120px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 64px;
-}
-
-.feature-item {
-  text-align: center;
-}
-
-.feature-number {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--gray);
+.about-text {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 2;
   margin-bottom: 32px;
 }
 
-.feature-title {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 24px;
-  letter-spacing: 0.02em;
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.feature-text {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 2;
+.about-tag {
+  font-size: 13px;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  padding: 8px 16px;
+  border-radius: 20px;
 }
 
 /* ===================================
-   CTA Section
+   Point Section
    =================================== */
-.cta {
-  background: var(--dark);
+.point {
+  background: var(--cream);
+}
+
+.point-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.point-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(92, 74, 61, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.point-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(92, 74, 61, 0.12);
+}
+
+.point-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 28px;
+}
+
+.point-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.point-text {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.9;
+}
+
+/* ===================================
+   First Section (初めての方へ)
+   =================================== */
+.first {
+  background: var(--primary-light);
+}
+
+.first-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.first .section-title {
+  margin-bottom: 24px;
+}
+
+.first-lead {
+  font-size: 15px;
+  color: var(--brown-light);
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+.first-steps {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.step-item {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 240px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 auto 16px;
+}
+
+.step-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 8px;
+}
+
+.step-text {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* ===================================
+   Contact Section
+   =================================== */
+.contact {
+  background: var(--brown);
   color: var(--white);
   text-align: center;
 }
 
-.cta-inner {
-  max-width: 800px;
-  margin: 0 auto;
+.contact .section-label {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
 }
 
-.cta .section-label {
-  color: rgba(255, 255, 255, 0.5);
+.contact .section-title {
+  color: var(--white);
 }
 
-.cta .section-title {
-  margin-bottom: 48px;
+.contact-lead {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 40px;
+  line-height: 2;
 }
 
-.cta-buttons {
+.contact-buttons {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 20px 48px;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  border: 1px solid var(--white);
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 40px;
+  font-size: 15px;
+  border-radius: 50px;
   transition: all 0.3s;
 }
 
-.btn:hover {
-  background: var(--white);
-  color: var(--dark);
-}
-
-.btn-primary {
-  background: var(--white);
-  color: var(--dark);
-}
-
-.btn-primary:hover {
-  background: transparent;
+.btn-line {
+  background: #06C755;
   color: var(--white);
+}
+
+.btn-line:hover {
+  background: #05a648;
+  transform: translateY(-2px);
+}
+
+.btn-instagram {
+  background: var(--white);
+  color: var(--brown);
+}
+
+.btn-instagram:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
 }
 
 /* ===================================
    Location Section
    =================================== */
 .location {
-  max-width: 1400px;
-  margin: 0 auto;
+  background: var(--white);
 }
 
 .location-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 80px;
+  gap: 48px;
+  align-items: start;
 }
 
 .location-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 20px 0;
 }
 
 .location-item {
-  padding: 32px 0;
-  border-bottom: 1px solid var(--gray-light);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.location-item:first-child {
-  padding-top: 0;
+.location-item:last-child {
+  border-bottom: none;
 }
 
 .location-label {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: var(--gray);
-  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
 }
 
 .location-value {
   font-size: 15px;
+  color: var(--text);
   line-height: 1.8;
 }
 
 .location-map {
-  aspect-ratio: 4/3;
+  border-radius: 16px;
   overflow: hidden;
+  aspect-ratio: 4/3;
 }
 
 .location-map iframe {
   width: 100%;
   height: 100%;
   border: none;
-  filter: grayscale(100%);
-  transition: filter 0.5s;
-}
-
-.location-map:hover iframe {
-  filter: grayscale(0%);
 }
 
 /* ===================================
    Footer
    =================================== */
 .footer {
-  padding: 80px 48px;
-  border-top: 1px solid var(--gray-light);
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
+  background: var(--cream);
+  padding: 60px 40px 40px;
+  text-align: center;
 }
 
 .footer-brand {
-  font-size: 13px;
-  letter-spacing: 0.05em;
+  font-size: 14px;
+  color: var(--brown);
+  margin-bottom: 24px;
 }
 
 .footer-links {
   display: flex;
-  gap: 48px;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--gray);
+  font-size: 13px;
+  color: var(--text-light);
   transition: color 0.3s;
 }
 
 .footer-links a:hover {
-  color: var(--black);
+  color: var(--primary-dark);
 }
 
 .footer-copy {
-  font-size: 11px;
-  color: var(--gray);
+  font-size: 12px;
+  color: var(--text-light);
 }
 
 /* ===================================
    Responsive
    =================================== */
-@media (max-width: 1024px) {
-  header {
-    padding: 20px 32px;
-  }
-
-  header.scrolled {
-    padding: 14px 32px;
-  }
-
-  nav ul {
-    gap: 32px;
-  }
-
-  .section {
-    padding: 120px 32px;
-  }
-
-  .about {
-    gap: 80px;
-  }
-
-  .features-grid {
-    gap: 48px;
-  }
-
-  .location-grid {
-    gap: 48px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   header {
     padding: 16px 24px;
   }
 
-  header.scrolled {
-    padding: 12px 24px;
-  }
-
-  #logo {
-    height: 32px;
-  }
-
   nav ul {
-    gap: 20px;
-  }
-
-  nav a {
-    font-size: 11px;
-  }
-
-  .hero-title {
-    font-size: clamp(28px, 8vw, 48px);
+    gap: 24px;
   }
 
   .section {
-    padding: 100px 24px;
+    padding: 80px 24px;
   }
 
-  .about {
+  .about-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .about-content {
-    padding-right: 0;
-    order: 1;
+    gap: 40px;
   }
 
   .about-image {
-    order: 2;
-    aspect-ratio: 16/10;
+    order: -1;
   }
 
-  .features-header {
-    margin-bottom: 80px;
-  }
-
-  .features-grid {
+  .point-grid {
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 20px;
   }
 
-  .cta-buttons {
+  .point-card {
+    padding: 32px 24px;
+  }
+
+  .first-steps {
     flex-direction: column;
     align-items: center;
   }
 
-  .btn {
+  .step-item {
+    max-width: 100%;
     width: 100%;
-    max-width: 320px;
-    justify-content: center;
   }
 
   .location-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .location-map {
-    aspect-ratio: 16/10;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px 32px;
+    gap: 32px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   header {
     padding: 14px 20px;
+  }
+
+  #logo {
+    height: 36px;
   }
 
   nav ul {
@@ -575,23 +666,52 @@ nav a:hover {
   }
 
   nav a {
-    font-size: 10px;
-    letter-spacing: 0.05em;
+    font-size: 11px;
+  }
+
+  .hero-title {
+    font-size: 26px;
   }
 
   .section {
-    padding: 80px 20px;
+    padding: 60px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
   }
 
   .section-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
-  .feature-title {
-    font-size: 18px;
+  .message-box {
+    padding: 40px 24px;
   }
 
-  .scroll-indicator {
-    display: none;
+  .message-text {
+    font-size: 15px;
+  }
+
+  .about-title {
+    font-size: 20px;
+  }
+
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .footer {
+    padding: 48px 20px 32px;
+  }
+
+  .footer-links {
+    gap: 20px;
   }
 }
