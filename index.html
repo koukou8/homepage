@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260129">
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260129b">
 
   <!-- 構造化データ (JSON-LD) -->
   <script type="application/ld+json">
@@ -158,8 +158,6 @@
     <video class="hero-video" src="video/STRETCH&STRENGTH PV.mp4" loop autoplay muted playsinline></video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-subtitle">Personal Gym in Jiyugaoka</p>
-      <h1 class="hero-title">あなたの習慣に、<br>フィットネスを。</h1>
       <div class="hero-scroll">
         <span>Scroll</span>
         <div class="hero-scroll-line"></div>
@@ -170,30 +168,8 @@
   <!-- Service -->
   <section class="concept" id="service">
     <div class="concept-inner">
-      <div class="section-label">Service</div>
+      <div class="section-label">SERVICE</div>
       <h2 class="concept-title">施術内容</h2>
-      <p class="concept-text">
-        完全個室ストレッチで姿勢改善<br>
-        パーソナルトレーニング<br>
-        着替え不要、サプリメント&シャワー完備
-      </p>
-      <div class="concept-features">
-        <div class="feature">
-          <span class="feature-num">01</span>
-          <h3>完全個室</h3>
-          <p>周りを気にせず<br>集中できる空間</p>
-        </div>
-        <div class="feature">
-          <span class="feature-num">02</span>
-          <h3>マンツーマン</h3>
-          <p>お一人おひとりに<br>合わせた施術</p>
-        </div>
-        <div class="feature">
-          <span class="feature-num">03</span>
-          <h3>着替え不要</h3>
-          <p>お仕事帰りでも<br>気軽にお越しいただけます</p>
-        </div>
-      </div>
       <a href="service.html" class="btn" style="margin-top: 48px;">サービスの詳細はこちら</a>
     </div>
   </section>
@@ -201,7 +177,7 @@
   <!-- Gallery -->
   <section class="space" id="gallery">
     <div class="space-header">
-      <div class="section-label">Gallery</div>
+      <div class="section-label">GALLERY</div>
       <h2 class="space-title">施設紹介</h2>
     </div>
     <div class="space-gallery">
@@ -217,11 +193,23 @@
     </div>
   </section>
 
+  <!-- Blog -->
+  <section class="blog" id="blog">
+    <div class="blog-inner">
+      <div class="section-label">BLOG</div>
+      <h2 class="blog-title">ブログ</h2>
+      <div id="posts-container" class="blog-posts">
+        <p>記事を読み込んでいます...</p>
+      </div>
+      <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="btn">Post List</a>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section class="service" id="contact">
     <div class="service-inner">
       <div class="service-content">
-        <div class="section-label">Contact</div>
+        <div class="section-label">CONTACT</div>
         <h2 class="service-title">お問い合わせ</h2>
         <p class="service-text">
           ご予約・お問い合わせは<br>
@@ -264,7 +252,7 @@
   <!-- CTA -->
   <section class="cta">
     <div class="cta-inner">
-      <p class="cta-label">Reservation</p>
+      <p class="cta-label">RESERVATION</p>
       <h2 class="cta-title">ご予約・お問い合わせ</h2>
       <p class="cta-text">LINEで簡単予約</p>
       <a href="https://lin.ee/CbDa0gM" class="cta-button">
@@ -277,7 +265,7 @@
   <section class="access" id="location">
     <div class="access-inner">
       <div class="access-info">
-        <div class="section-label">Location</div>
+        <div class="section-label">LOCATION</div>
         <h2 class="access-title">店舗情報</h2>
         <dl class="access-list">
           <div class="access-item">
@@ -371,10 +359,83 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-      document.querySelectorAll('.concept-inner, .service-content, .service-image, .space-item, .access-info, .access-map, .cta-inner').forEach(el => {
+      document.querySelectorAll('.concept-inner, .service-content, .service-image, .space-item, .access-info, .access-map, .cta-inner, .blog-inner').forEach(el => {
         el.classList.add('animate');
         observer.observe(el);
       });
+
+      // Blog RSS Feed
+      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
+      const proxyServices = [
+        'https://corsproxy.io/?' + encodeURIComponent(feedUrl)
+      ];
+      const postsContainer = document.getElementById('posts-container');
+
+      async function fetchWithFallback() {
+        for (let i = 0; i < proxyServices.length; i++) {
+          try {
+            const response = await fetch(proxyServices[i]);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return await response.text();
+          } catch (error) {
+            if (i === proxyServices.length - 1) {
+              throw new Error('すべてのプロキシサービスが利用できません。');
+            }
+          }
+        }
+      }
+
+      fetchWithFallback()
+        .then(xmlContent => {
+          let cleanedXml = xmlContent;
+          const xmlStartIndex = xmlContent.indexOf('<?xml');
+          const rssStartIndex = xmlContent.indexOf('<rss');
+
+          if (xmlStartIndex > 0) {
+            cleanedXml = xmlContent.substring(xmlStartIndex);
+          } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
+            cleanedXml = xmlContent.substring(rssStartIndex);
+          }
+
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(cleanedXml, 'text/xml');
+          const items = xmlDoc.querySelectorAll('item');
+
+          if (items.length === 0) {
+            postsContainer.innerHTML = '<p>記事が見つかりませんでした。</p>';
+            return;
+          }
+
+          postsContainer.innerHTML = '';
+          const maxPosts = Math.min(items.length, 3);
+
+          for (let i = 0; i < maxPosts; i++) {
+            const item = items[i];
+            const title = item.querySelector('title')?.textContent || 'タイトルなし';
+            const link = item.querySelector('link')?.textContent || '#';
+            const pubDate = item.querySelector('pubDate')?.textContent || '';
+
+            let formattedDate = '';
+            if (pubDate) {
+              const date = new Date(pubDate);
+              formattedDate = date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+
+            const postElement = document.createElement('a');
+            postElement.href = link;
+            postElement.className = 'blog-post';
+            postElement.innerHTML = `
+              <div class="blog-post-content">
+                <p class="blog-post-date">${formattedDate}</p>
+                <h3 class="blog-post-title">${title}</h3>
+              </div>
+            `;
+            postsContainer.appendChild(postElement);
+          }
+        })
+        .catch(error => {
+          postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
+        });
     });
   </script>
 
