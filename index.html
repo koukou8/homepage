@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>奥沢・自由が丘のパーソナルジム｜ストレッチ＆マッサージ対応｜STRETCH&STRENGTH</title>
-  <meta name="description" content="奥沢・自由が丘の完全個室パーソナルジム「STRETCH&STRENGTH」。ストレッチ×トレーニングで姿勢改善・不調予防を実現。奥沢/緑が丘/自由が丘駅徒歩圏、LINEで簡単予約。">
+  <title>STRETCH&STRENGTH｜自由が丘のストレッチ専門ジム</title>
+  <meta name="description" content="自由が丘・奥沢の完全個室ストレッチ専門ジム。姿勢改善・不調予防をサポート。">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260128">
-  
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=20260128b">
+
   <!-- 構造化データ (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -42,415 +42,179 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "10:30",
         "closes": "21:00"
       }
     ],
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "完全個室",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "シャワー完備",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "着替え不要",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "サプリメント",
-        "value": true
-      }
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "サービス一覧",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "パーソナルトレーニング",
-            "description": "完全個室でのマンツーマントレーニング"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "ストレッチ",
-            "description": "姿勢改善・不調予防のためのストレッチ"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "マッサージ",
-            "description": "身体のケアとリラクゼーション"
-          }
-        }
-      ]
-    },
     "sameAs": [
       "https://www.instagram.com/s.s_ebisu/?hl=ja",
-      "https://x.com/motonori89?lang=ja",
-      "https://www.youtube.com/@moto.89",
-      "https://lin.ee/CbDa0gM",
-      "https://www.facebook.com/p/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%82%A2%E3%83%B3%E3%83%89%E3%82%B9%E3%83%88%E3%83%AC%E3%83%B3%E3%82%B0%E3%82%B9%E8%87%AA%E7%94%B1%E3%81%8C%E4%B8%98-100070584141222/"
-    ]
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "ホーム",
-        "item": "https://motorogu-essays-in-idleness.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "サービス",
-        "item": "https://motorogu-essays-in-idleness.com/service.html"
-      }
+      "https://lin.ee/CbDa0gM"
     ]
   }
   </script>
 </head>
 <body>
 
-  <div class="video-container" id="video-area">
-    <video id="background-video" src="video/STRETCH&STRENGTH PV.mp4" loop autoplay muted playsinline></video>
-    <header>
-      <h1>
-        <a href="index.html"><img id="logo" src="images/logo.jpg" alt="STRETCH&STRENGTH"></a>
-      </h1>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="STRETCH&STRENGTH">
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="メニュー">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#access">Access</a>
+      <a href="https://lin.ee/CbDa0gM" class="nav-cta">予約する</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="hero-video" src="video/STRETCH&STRENGTH PV.mp4" loop autoplay muted playsinline></video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Stretch Studio in Jiyugaoka</p>
+      <h1 class="hero-title">あなたの身体を、<br>本来の状態へ。</h1>
+    </div>
+    <div class="scroll-hint">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image">
+        <img src="images/gym.jpg" alt="施術風景">
       </div>
-      <nav id="nav-menu">
-        <ul>
-          <li><a href="#service-area">SERVICE</a></li>
-          <li><a href="service.html#plan-area">PLAN</a></li>
-          <li><a href="#contact-area">CONTACT</a></li>
-          <li><a href="#location-area">LOCATION</a></li>
+      <div class="about-content">
+        <h2>完全個室の<br>ストレッチ専門スタジオ</h2>
+        <p>一人ひとりの身体に向き合い、<br>最適なケアを提供します。</p>
+        <ul class="about-features">
+          <li>完全個室・マンツーマン</li>
+          <li>着替え不要</li>
+          <li>駅徒歩5分</li>
         </ul>
-      </nav>
-    </header>
-    <div class="scroll-indicator"></div>
-  </div>
-
-  <section class="service-sec" id="service-area">
-    <h2 id="service-title" class="fade-in">SERVICE</h2>
-    <h3 class="fade-in delay-1">施術内容</h3>
-    <div class="image-container scale-in delay-2">
-      <img src="images/gym.jpg" alt="Service Image" id="service-image">
-    </div>
-    <div class="image-switcher fade-in delay-3">
-      <button onclick="changeImage('images/gym.jpg', this)"></button>
-      <button onclick="changeImage('images/gym-second.jpg', this)"></button>
-      <button onclick="changeImage('images/gym-third.jpg', this)"></button>
-    </div>
-    <div class="service-intro fade-in delay-4">
-        <p>完全個室ストレッチで姿勢改善<br>パーソナルトレーニング<br>着替え不要、サプリメント&シャワー完備</p>
-        <a href="service.html" class="detail-button slide">サービスの詳細はこちら</a>
-    </div>
-  </section>
-
-  <section class="blog-sec" id="blog-area">
-    <h2 id="blog-title" class="fade-in">BLOG</h2>
-    <h3 class="fade-in delay-1">ブログ</h3>
-    <div id="posts-container" class="text-line fade-in delay-2">
-      <p>記事を読み込んでいます...</p>
-    </div>
-    <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button fade-in delay-3">Post List</a>
-  </section>
-
-  <section class="phrase-sec" id="phrase-area">
-    <span class="fade-in">あなたの習慣に、フィットネスを。</span>
-  </section>
-
-  <section class="contact-sec" id="contact-area">
-    <h2 id="contact-title" class="fade-in">CONTACT</h2>
-    <h3 class="fade-in delay-1">お問い合わせ</h3>
-    <div class="images-top">
-      <div class="sns-container slide-in-left delay-2">
-        <p class="small-word">ジムの最新情報</p>
-        <div class="images-top-container">
-          <a href="https://www.instagram.com/s.s_ebisu/?hl=ja"><img src="images/instagram.jpg" alt="Image 1"></a>
-        </div>
-        <p class="sns-name">Instagram</p>
-      </div>
-      <div class="sns-container line slide-in-right delay-2">
-        <p class="small-word">ご予約はこちらから</p>
-        <div class="images-top-container">
-          <a href="https://lin.ee/CbDa0gM"><img src="images/line.jpg" alt="Image 2"></a>
-        </div>
-        <p class="sns-name">official LINE</p>
-      </div>
-    </div>
-    <div class="images-bottom fade-in delay-3">
-      <div class="sns-container">
-        <div class="image-bottom-container">
-          <a href="https://x.com/motonori89?lang=ja"><img src="images/x.jpg" alt="Image 3"></a>
-        </div>
-      </div>
-      <div class="sns-container">
-        <div class="image-bottom-container">
-          <a href="https://www.youtube.com/@moto.89"><img src="images/youtube.jpg" alt="Image 4"></a>
-        </div>
+        <a href="service.html" class="btn">詳しく見る</a>
       </div>
     </div>
   </section>
 
-  <section class="location-sec" id="location-area">
-    <h2 id="location-title" class="fade-in">LOCATION</h2>
-    <h3 class="fade-in delay-1">店舗情報</h3>
-    <div class="text-area">
-      <div class="info-card slide-in-left delay-2">
-        <div class="icon-wrapper">
-          <div class="icon-circle">
-            <img src="icons/map-pin.svg" alt="住所アイコン" style="width: 24px; height: 24px;">
-          </div>
-        </div>
-        <div class="info-content">
-          <span class="info-label">住所</span>
-          <p class="info-text">東京都世田谷区奥沢1-25-4<br>ARK HOUSE自由が丘201</p>
-        </div>
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/gym.jpg" alt="スタジオ1">
       </div>
-      <div class="info-card slide-in-right delay-2">
-        <div class="icon-wrapper">
-          <div class="icon-circle">
-            <img src="icons/walk-man.svg" alt="アクセスアイコン" style="width: 24px; height: 24px;">
-          </div>
-        </div>
-        <div class="info-content">
-          <span class="info-label">アクセス</span>
-          <p class="info-text">奥沢駅徒歩5分/田園調布駅徒歩10分<br>自由が丘駅徒歩15分</p>
-        </div>
+      <div class="gallery-item">
+        <img src="images/gym-second.jpg" alt="スタジオ2">
       </div>
-    </div>
-    <div class="map-area scale-in delay-3">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12519.408432730104!2d139.71182905001558!3d35.6432904766393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b53d275d47f%3A0x7b9b1a5e4a5ddcd5!2zU1RSRU5HVEgmU1RSRVRDSCjjgrnjg4jjg6zjg7PjgrDjgrnjgqLjg7Pjg4njgrnjg4jjg6zjg4Pjg4EpIOaBteavlOWvvw!5e0!3m2!1sja!2sjp!4v1704579138520!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="gallery-item">
+        <img src="images/gym-third.jpg" alt="スタジオ3">
+      </div>
     </div>
   </section>
 
+  <!-- CTA -->
+  <section class="cta">
+    <p class="cta-text">まずは体験から</p>
+    <a href="https://lin.ee/CbDa0gM" class="cta-button">
+      LINEで予約
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- Access -->
+  <section class="access" id="access">
+    <div class="access-inner">
+      <div class="access-info">
+        <h2>Access</h2>
+        <dl class="access-list">
+          <dt>住所</dt>
+          <dd>東京都世田谷区奥沢1-25-4<br>ARK HOUSE自由が丘201</dd>
+          <dt>アクセス</dt>
+          <dd>奥沢駅 徒歩5分<br>自由が丘駅 徒歩15分</dd>
+          <dt>営業時間</dt>
+          <dd>10:30 - 21:00</dd>
+        </dl>
+      </div>
+      <div class="access-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.5!2d139.676!3d35.601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b53d275d47f%3A0x7b9b1a5e4a5ddcd5!2sSTRENGTH%26STRETCH!5e0!3m2!1sja!2sjp!4v1704579138520" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-links">
-      <div><a href="#service-area">SERVICE</a></div>
-      <div><a href="service.html#plan-area">PLAN</a></div>
-      <div><a href="#blog-area">BLOG</a></div>
-      <div><a href="service.html#reservation-area">RESERVATION</a></div>
-      <div><a href="#contact-area">CONTACT</a></div>
-      <div><a href="service.html#profile-area">TRAINER</a></div>
-      <div><a href="#location-area">LOCATION</a></div>
-      <div><a href="service.html#qa-area">Q&A</a></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.jpg" alt="STRETCH&STRENGTH" class="footer-logo">
+      </div>
+      <div class="footer-links">
+        <a href="service.html">Service</a>
+        <a href="service.html#plan-area">Plan</a>
+        <a href="https://lin.ee/CbDa0gM">Contact</a>
+      </div>
+      <div class="footer-sns">
+        <a href="https://www.instagram.com/s.s_ebisu/?hl=ja" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://lin.ee/CbDa0gM" aria-label="LINE">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="policy-info">
-      <p><a href="https://motorogu-essays-in-idleness.com/privacypolicy/">プライバシーポリシー</a></p>
-      <p>|</p>
-      <p><a href="https://motorogu-essays-in-idleness.com/104-2/">お問い合わせ</a></p>
-    </div>
-    <div class="footer-bottom">
-      © 2024 STRETCH&STRENGTH
-    </div>
+    <p class="footer-copy">&copy; 2024 STRETCH&STRENGTH</p>
   </footer>
 
   <script>
-    // スライド写真の処理
-    function changeImage(newImageSrc, button) {
-      const img = document.getElementById('service-image');
-      img.style.opacity = '0';
-      img.style.transform = 'scale(0.98)';
-
-      setTimeout(() => {
-        img.src = newImageSrc;
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1)';
-      }, 200);
-
-      // すべてのボタンのactiveクラスを削除
-      document.querySelectorAll('.image-switcher button').forEach(function(btn) {
-        btn.classList.remove('active');
-        btn.style.backgroundColor = '';
-      });
-
-      // 選択されたボタンにactiveクラスを追加
-      button.classList.add('active');
-    }
-
-    // ページ読み込み時に最初のボタンのクリックをシミュレート
-    window.onload = function() {
-      // 最初のボタンのクリックをシミュレート
-      var firstButton = document.querySelector('.image-switcher button');
-      if (firstButton) {
-        firstButton.classList.add('active');
-      }
-    };
-
-    // ページの読み込み後に実行
-    window.addEventListener('DOMContentLoaded', function () {
-      const header = document.querySelector('header');
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
       const menuToggle = document.getElementById('menu-toggle');
-      const navMenu = document.getElementById('nav-menu');
+      const nav = document.getElementById('nav');
 
-      // ハンバーガーメニューの処理
-      if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-          menuToggle.classList.toggle('active');
-          navMenu.classList.toggle('active');
-          document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // ナビリンクをクリックしたらメニューを閉じる
-        navMenu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      // スクロールイベントを監視
-      window.addEventListener('scroll', function () {
-        if (window.scrollY > 100) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
+      // Header scroll effect
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
       });
 
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80px 0px',
-        threshold: 0.1
-      };
+      // Mobile menu
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+      });
 
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          nav.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Scroll animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, observerOptions);
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-      // Observe all animated elements
-      document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+      document.querySelectorAll('.about-image, .about-content, .gallery-item, .access-info, .access-map').forEach(el => {
+        el.classList.add('animate');
         observer.observe(el);
       });
-
-      // 対象のブログ著者のRSSフィードURL
-      // WordPressの場合、著者ページの末尾に /feed/ をつけるとRSSフィードを取得できることが一般的です
-      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
-      
-      // 複数のCORSプロキシサービスを定義（フォールバック機能）
-      const proxyServices = [
-          'https://corsproxy.io/?' + encodeURIComponent(feedUrl)       
-      ];
-
-      // 記事を表示するコンテナ要素を取得
-      const postsContainer = document.getElementById('posts-container');
-
-      // プロキシサービスを順番に試す関数
-      async function fetchWithFallback() {
-          for (let i = 0; i < proxyServices.length; i++) {
-              try {
-                  console.log(`プロキシサービス ${i + 1} を試行中: ${proxyServices[i]}`);
-                  const response = await fetch(proxyServices[i]);
-                  
-                  if (!response.ok) {
-                      throw new Error(`HTTP error! status: ${response.status}`);
-                  }
-                  
-                  return await response.text();
-
-              } catch (error) {
-                  console.log(`プロキシサービス ${i + 1} でエラー:`, error);
-                  if (i === proxyServices.length - 1) {
-                      throw new Error('すべてのプロキシサービスが利用できません。');
-                  }
-              }
-          }
-      }
-
-      // RSSフィードを取得
-      fetchWithFallback()
-          .then(xmlContent => {
-              console.log('取得したXMLコンテンツ:', xmlContent);
-              
-              // PHPの警告メッセージなどがXMLの前に付加されている場合、それを除去
-              // <?xml または <rss から始まる部分を抽出
-              let cleanedXml = xmlContent;
-              const xmlStartIndex = xmlContent.indexOf('<?xml');
-              const rssStartIndex = xmlContent.indexOf('<rss');
-              
-              if (xmlStartIndex > 0) {
-                  // <?xml が0より後ろにある場合、その前のゴミデータを除去
-                  cleanedXml = xmlContent.substring(xmlStartIndex);
-                  console.log('XMLの前のゴミデータを除去しました');
-              } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
-                  // <?xml がなく、<rss が0より後ろにある場合
-                  cleanedXml = xmlContent.substring(rssStartIndex);
-                  console.log('RSSタグの前のゴミデータを除去しました');
-              }
-              
-              // XMLとして解析
-              const xmlData = new window.DOMParser().parseFromString(cleanedXml, "text/xml");
-              
-              // すべての記事アイテム（<item>タグ）を取得
-              const items = xmlData.querySelectorAll("item");
-
-              // 表示するHTMLを格納する変数
-              let html = '<ul>';
-
-              // 取得したアイテムのうち、最初の4件だけをループ処理
-              // RSSフィードは通常、新しい順に並んでいるため、slice(0, 4)で最新の4件を取得できます
-              Array.from(items).slice(0, 4).forEach(item => {
-                  // 各アイテムからタイトルとリンクを取得
-                  const title = item.querySelector("title").textContent;
-                  const link = item.querySelector("link").textContent;                
-
-                  // リストアイテムとしてHTMLを組み立てる
-                  html += `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;                                    
-              });
-
-              html += '</ul>';
-
-              // 組み立てたHTMLをコンテナに挿入
-              postsContainer.innerHTML = html;
-          })
-          .catch(error => {
-              // エラーが発生した場合の処理
-              console.error('記事の取得中にエラーが発生しました:', error);
-              postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
-          });
     });
-  </script>      
+  </script>
 
 </body>
 </html>
