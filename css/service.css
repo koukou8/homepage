@@ -4,19 +4,23 @@
    =================================== */
 
 :root {
-  --primary-color: #ff7761;
-  --primary-dark: #e85a45;
-  --primary-light: #ff9988;
-  --accent-color: #1a1a2e;
-  --text-dark: #1a1a1a;
-  --text-light: #666666;
-  --bg-light: #f8f9fa;
-  --bg-dark: #0f0f1a;
+  /* 上品なベージュ・アイボリー系カラーパレット */
+  --primary-color: #b8a088;
+  --primary-dark: #9c8672;
+  --primary-light: #d4c4b0;
+  --accent-color: #5c4a3d;
+  --text-dark: #3d3d3d;
+  --text-light: #7a7a7a;
+  --bg-light: #faf8f5;
+  --bg-warm: #f5f0e8;
+  --bg-dark: #3d3530;
   --white: #ffffff;
-  --gradient-primary: linear-gradient(135deg, #ff7761 0%, #ff9988 100%);
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --ivory: #fffef9;
+  --gradient-primary: linear-gradient(135deg, #c9b89c 0%, #e0d4c4 100%);
+  --gradient-dark: linear-gradient(135deg, #5c4a3d 0%, #7a6455 100%);
+  --shadow-sm: 0 2px 10px rgba(92, 74, 61, 0.06);
+  --shadow-md: 0 8px 30px rgba(92, 74, 61, 0.10);
+  --shadow-lg: 0 20px 60px rgba(92, 74, 61, 0.12);
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -32,6 +36,7 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--ivory);
 }
 
 /* ===================================
@@ -50,11 +55,11 @@ header {
 }
 
 header.scrolled {
-  background: rgba(15, 15, 26, 0.95);
+  background: rgba(61, 53, 48, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 15px 40px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(92, 74, 61, 0.15);
 }
 
 header.scrolled nav ul li a {
@@ -516,7 +521,7 @@ h3 {
   align-items: center;
   text-align: center;
   padding: 100px 20px;
-  background: linear-gradient(135deg, #fff5f3 0%, #ffe8e3 100%);
+  background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
 }
 
 .button {
