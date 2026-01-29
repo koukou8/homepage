@@ -179,7 +179,11 @@
     <h2 id="blog-title">BLOG</h2>
     <h3>ブログ</h3>
     <div id="posts-container" class="text-line">
-      <p>記事を読み込んでいます...</p>
+      <ul>
+        <li><a href="https://motorogu-essays-in-idleness.com/baseball-fatigue-management-metrics/" target="_blank" rel="noopener noreferrer">#46【野球人必見】長丁場のシーズンを勝ち抜く「疲労管理」の教科書。感覚に頼らない3つの客観的指標</a></li>
+        <li><a href="https://motorogu-essays-in-idleness.com/baseball-best-buy-2025/" target="_blank" rel="noopener noreferrer">＃45【決定版】2025年、野球のパフォーマンスを支えた「投資先」ベスト9：私が買った最高効率のギアたち</a></li>
+        <li><a href="https://motorogu-essays-in-idleness.com/weckmethod-spinal-engine-performance/" target="_blank" rel="noopener noreferrer">#44「感覚」と「動き」のズレを埋める新戦略。背骨をエンジンに変える「WeckMethod」の衝撃</a></li>
+      </ul>
     </div>
     <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="blog-button">Post List</a>
   </section>
@@ -349,91 +353,6 @@
         }
       });
 
-      // 対象のブログ著者のRSSフィードURL
-      // WordPressの場合、著者ページの末尾に /feed/ をつけるとRSSフィードを取得できることが一般的です
-      const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
-      
-      // 複数のCORSプロキシサービスを定義（フォールバック機能）
-      const proxyServices = [
-          'https://corsproxy.io/?' + encodeURIComponent(feedUrl)       
-      ];
-
-      // 記事を表示するコンテナ要素を取得
-      const postsContainer = document.getElementById('posts-container');
-
-      // プロキシサービスを順番に試す関数
-      async function fetchWithFallback() {
-          for (let i = 0; i < proxyServices.length; i++) {
-              try {
-                  console.log(`プロキシサービス ${i + 1} を試行中: ${proxyServices[i]}`);
-                  const response = await fetch(proxyServices[i]);
-                  
-                  if (!response.ok) {
-                      throw new Error(`HTTP error! status: ${response.status}`);
-                  }
-                  
-                  return await response.text();
-
-              } catch (error) {
-                  console.log(`プロキシサービス ${i + 1} でエラー:`, error);
-                  if (i === proxyServices.length - 1) {
-                      throw new Error('すべてのプロキシサービスが利用できません。');
-                  }
-              }
-          }
-      }
-
-      // RSSフィードを取得
-      fetchWithFallback()
-          .then(xmlContent => {
-              console.log('取得したXMLコンテンツ:', xmlContent);
-              
-              // PHPの警告メッセージなどがXMLの前に付加されている場合、それを除去
-              // <?xml または <rss から始まる部分を抽出
-              let cleanedXml = xmlContent;
-              const xmlStartIndex = xmlContent.indexOf('<?xml');
-              const rssStartIndex = xmlContent.indexOf('<rss');
-              
-              if (xmlStartIndex > 0) {
-                  // <?xml が0より後ろにある場合、その前のゴミデータを除去
-                  cleanedXml = xmlContent.substring(xmlStartIndex);
-                  console.log('XMLの前のゴミデータを除去しました');
-              } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
-                  // <?xml がなく、<rss が0より後ろにある場合
-                  cleanedXml = xmlContent.substring(rssStartIndex);
-                  console.log('RSSタグの前のゴミデータを除去しました');
-              }
-              
-              // XMLとして解析
-              const xmlData = new window.DOMParser().parseFromString(cleanedXml, "text/xml");
-              
-              // すべての記事アイテム（<item>タグ）を取得
-              const items = xmlData.querySelectorAll("item");
-
-              // 表示するHTMLを格納する変数
-              let html = '<ul>';
-
-              // 取得したアイテムのうち、最初の4件だけをループ処理
-              // RSSフィードは通常、新しい順に並んでいるため、slice(0, 4)で最新の4件を取得できます
-              Array.from(items).slice(0, 4).forEach(item => {
-                  // 各アイテムからタイトルとリンクを取得
-                  const title = item.querySelector("title").textContent;
-                  const link = item.querySelector("link").textContent;                
-
-                  // リストアイテムとしてHTMLを組み立てる
-                  html += `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;                                    
-              });
-
-              html += '</ul>';
-
-              // 組み立てたHTMLをコンテナに挿入
-              postsContainer.innerHTML = html;
-          })
-          .catch(error => {
-              // エラーが発生した場合の処理
-              console.error('記事の取得中にエラーが発生しました:', error);
-              postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
-          });
     });
   </script>      
 
