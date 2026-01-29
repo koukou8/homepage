@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/png" href="images/favicon.jpg">
-  <link rel="stylesheet" href="css/index.css?v=20260129b">
+  <link rel="stylesheet" href="css/index.css?v=20260129c">
 
   <script type="application/ld+json">
   {
@@ -103,41 +103,18 @@
     </div>
   </section>
 
-  <!-- Point -->
-  <section class="section point">
+  <!-- Blog -->
+  <section class="section blog" id="blog">
     <div class="section-inner">
       <div class="section-header fade-in">
-        <span class="section-label">Point</span>
-        <h2 class="section-title">選ばれる理由</h2>
+        <span class="section-label">Blog</span>
+        <h2 class="section-title">ブログ</h2>
       </div>
-      <div class="point-grid">
-        <div class="point-card fade-in">
-          <div class="point-icon">🏠</div>
-          <h3 class="point-title">完全個室</h3>
-          <p class="point-text">
-            周りを気にせず、<br>
-            あなただけの空間で<br>
-            集中してトレーニング。
-          </p>
-        </div>
-        <div class="point-card fade-in">
-          <div class="point-icon">👋</div>
-          <h3 class="point-title">手ぶらでOK</h3>
-          <p class="point-text">
-            着替え不要。<br>
-            シャワー・サプリメント完備で<br>
-            気軽に通えます。
-          </p>
-        </div>
-        <div class="point-card fade-in">
-          <div class="point-icon">💪</div>
-          <h3 class="point-title">姿勢改善</h3>
-          <p class="point-text">
-            ストレッチとトレーニングで<br>
-            身体の不調を根本から<br>
-            改善していきます。
-          </p>
-        </div>
+      <div id="posts-container" class="blog-posts fade-in">
+        <p>記事を読み込んでいます...</p>
+      </div>
+      <div class="blog-more fade-in">
+        <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="btn btn-blog">Post List</a>
       </div>
     </div>
   </section>
@@ -221,6 +198,81 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Blog RSS Feed
+    const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
+    const proxyServices = [
+      'https://corsproxy.io/?' + encodeURIComponent(feedUrl)
+    ];
+    const postsContainer = document.getElementById('posts-container');
+
+    async function fetchWithFallback() {
+      for (let i = 0; i < proxyServices.length; i++) {
+        try {
+          const response = await fetch(proxyServices[i]);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return await response.text();
+        } catch (error) {
+          if (i === proxyServices.length - 1) {
+            throw new Error('すべてのプロキシサービスが利用できません。');
+          }
+        }
+      }
+    }
+
+    fetchWithFallback()
+      .then(xmlContent => {
+        let cleanedXml = xmlContent;
+        const xmlStartIndex = xmlContent.indexOf('<?xml');
+        const rssStartIndex = xmlContent.indexOf('<rss');
+
+        if (xmlStartIndex > 0) {
+          cleanedXml = xmlContent.substring(xmlStartIndex);
+        } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
+          cleanedXml = xmlContent.substring(rssStartIndex);
+        }
+
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(cleanedXml, 'text/xml');
+        const items = xmlDoc.querySelectorAll('item');
+
+        if (items.length === 0) {
+          postsContainer.innerHTML = '<p>記事が見つかりませんでした。</p>';
+          return;
+        }
+
+        postsContainer.innerHTML = '';
+        const maxPosts = Math.min(items.length, 3);
+
+        for (let i = 0; i < maxPosts; i++) {
+          const item = items[i];
+          const title = item.querySelector('title')?.textContent || 'タイトルなし';
+          const link = item.querySelector('link')?.textContent || '#';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+
+          let formattedDate = '';
+          if (pubDate) {
+            const date = new Date(pubDate);
+            formattedDate = date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+          }
+
+          const postElement = document.createElement('a');
+          postElement.href = link;
+          postElement.target = '_blank';
+          postElement.rel = 'noopener noreferrer';
+          postElement.className = 'blog-post';
+          postElement.innerHTML = `
+            <div class="blog-post-content">
+              <p class="blog-post-date">${formattedDate}</p>
+              <h3 class="blog-post-title">${title}</h3>
+            </div>
+          `;
+          postsContainer.appendChild(postElement);
+        }
+      })
+      .catch(error => {
+        postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
+      });
   </script>
 
 </body>

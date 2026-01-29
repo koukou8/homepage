@@ -461,36 +461,43 @@ nav a:hover {
 }
 
 /* ===================================
-   Point Section
+   Blog Section
    =================================== */
-.point {
+.blog {
   background: var(--deep-gray);
   padding: 160px 0;
 }
 
-.point .section-label::before {
+.blog .section-label::before {
   background: var(--bronze-light);
 }
 
-.point .section-title {
+.blog .section-title {
   color: var(--white);
 }
 
-.point-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.blog-posts {
+  display: flex;
+  flex-direction: column;
   gap: 2px;
+  margin-bottom: 56px;
 }
 
-.point-card {
+.blog-posts > p {
+  color: var(--soft-gray);
+  font-size: 14px;
+}
+
+.blog-post {
+  display: block;
+  padding: 32px 40px;
   background: var(--mid-gray);
-  padding: 56px 40px;
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
 }
 
-.point-card::before {
+.blog-post::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -502,51 +509,54 @@ nav a:hover {
   transition: transform 0.5s ease;
 }
 
-.point-card:hover::before {
+.blog-post:hover::before {
   transform: scaleX(1);
 }
 
-.point-card:hover {
+.blog-post:hover {
   background: var(--charcoal);
 }
 
-.point-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--gold-mist);
-  border: 1px solid rgba(176, 141, 110, 0.3);
-  border-radius: 50%;
+.blog-post-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 32px;
-  font-size: 22px;
-  transition: all 0.5s ease;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.point-card:hover .point-icon {
-  background: var(--bronze);
-  border-color: var(--bronze);
+.blog-post-date {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--bronze);
 }
 
-.point-title {
+.blog-post-title {
   font-family: 'Cormorant Garamond', 'Hiragino Mincho ProN', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  color: var(--white);
-}
-
-.point-text {
-  font-size: 13px;
-  color: var(--soft-gray);
-  line-height: 2;
+  color: var(--light-gray);
+  line-height: 1.8;
   transition: color 0.5s;
 }
 
-.point-card:hover .point-text {
+.blog-post:hover .blog-post-title {
+  color: var(--white);
+}
+
+.blog-more {
+  text-align: center;
+}
+
+.btn-blog {
+  background: transparent;
   color: var(--light-gray);
+  border: 1px solid var(--warm-gray);
+}
+
+.btn-blog:hover {
+  border-color: var(--bronze);
+  color: var(--bronze-light);
 }
 
 /* ===================================
@@ -870,8 +880,8 @@ nav a:hover {
     height: 580px;
   }
 
-  .point-card {
-    padding: 44px 32px;
+  .blog-post {
+    padding: 28px 32px;
   }
 
   .first-steps {
@@ -970,17 +980,12 @@ nav a:hover {
     display: none;
   }
 
-  .point {
+  .blog {
     padding: 100px 0;
   }
 
-  .point-grid {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-
-  .point-card {
-    padding: 40px 32px;
+  .blog-post {
+    padding: 24px 24px;
   }
 
   .first {
@@ -1119,8 +1124,8 @@ nav a:hover {
     padding: 10px 16px;
   }
 
-  .point-title {
-    font-size: 18px;
+  .blog-post-title {
+    font-size: 16px;
   }
 
   .footer-links {
