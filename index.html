@@ -111,7 +111,21 @@
         <h2 class="section-title">ブログ</h2>
       </div>
       <div id="posts-container" class="blog-posts fade-in">
-        <p>記事を読み込んでいます...</p>
+        <a href="https://motorogu-essays-in-idleness.com/baseball-fatigue-management-metrics/" target="_blank" rel="noopener noreferrer" class="blog-post">
+          <div class="blog-post-content">
+            <h3 class="blog-post-title">#46【野球人必見】長丁場のシーズンを勝ち抜く「疲労管理」の教科書。感覚に頼らない3つの客観的指標</h3>
+          </div>
+        </a>
+        <a href="https://motorogu-essays-in-idleness.com/baseball-best-buy-2025/" target="_blank" rel="noopener noreferrer" class="blog-post">
+          <div class="blog-post-content">
+            <h3 class="blog-post-title">＃45【決定版】2025年、野球のパフォーマンスを支えた「投資先」ベスト9：私が買った最高効率のギアたち</h3>
+          </div>
+        </a>
+        <a href="https://motorogu-essays-in-idleness.com/weckmethod-spinal-engine-performance/" target="_blank" rel="noopener noreferrer" class="blog-post">
+          <div class="blog-post-content">
+            <h3 class="blog-post-title">#44「感覚」と「動き」のズレを埋める新戦略。背骨をエンジンに変える「WeckMethod」の衝撃</h3>
+          </div>
+        </a>
       </div>
       <div class="blog-more fade-in">
         <a href="https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/" class="btn btn-blog">Post List</a>
@@ -199,80 +213,6 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Blog RSS Feed
-    const feedUrl = 'https://motorogu-essays-in-idleness.com/author/love-baseball-boy8989gmail-com/feed/';
-    const proxyServices = [
-      'https://corsproxy.io/?' + encodeURIComponent(feedUrl)
-    ];
-    const postsContainer = document.getElementById('posts-container');
-
-    async function fetchWithFallback() {
-      for (let i = 0; i < proxyServices.length; i++) {
-        try {
-          const response = await fetch(proxyServices[i]);
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          return await response.text();
-        } catch (error) {
-          if (i === proxyServices.length - 1) {
-            throw new Error('すべてのプロキシサービスが利用できません。');
-          }
-        }
-      }
-    }
-
-    fetchWithFallback()
-      .then(xmlContent => {
-        let cleanedXml = xmlContent;
-        const xmlStartIndex = xmlContent.indexOf('<?xml');
-        const rssStartIndex = xmlContent.indexOf('<rss');
-
-        if (xmlStartIndex > 0) {
-          cleanedXml = xmlContent.substring(xmlStartIndex);
-        } else if (xmlStartIndex === -1 && rssStartIndex > 0) {
-          cleanedXml = xmlContent.substring(rssStartIndex);
-        }
-
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(cleanedXml, 'text/xml');
-        const items = xmlDoc.querySelectorAll('item');
-
-        if (items.length === 0) {
-          postsContainer.innerHTML = '<p>記事が見つかりませんでした。</p>';
-          return;
-        }
-
-        postsContainer.innerHTML = '';
-        const maxPosts = Math.min(items.length, 3);
-
-        for (let i = 0; i < maxPosts; i++) {
-          const item = items[i];
-          const title = item.querySelector('title')?.textContent || 'タイトルなし';
-          const link = item.querySelector('link')?.textContent || '#';
-          const pubDate = item.querySelector('pubDate')?.textContent || '';
-
-          let formattedDate = '';
-          if (pubDate) {
-            const date = new Date(pubDate);
-            formattedDate = date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
-          }
-
-          const postElement = document.createElement('a');
-          postElement.href = link;
-          postElement.target = '_blank';
-          postElement.rel = 'noopener noreferrer';
-          postElement.className = 'blog-post';
-          postElement.innerHTML = `
-            <div class="blog-post-content">
-              <p class="blog-post-date">${formattedDate}</p>
-              <h3 class="blog-post-title">${title}</h3>
-            </div>
-          `;
-          postsContainer.appendChild(postElement);
-        }
-      })
-      .catch(error => {
-        postsContainer.innerHTML = '<p>記事の読み込みに失敗しました。</p>';
-      });
   </script>
 
 </body>
