@@ -1,182 +1,283 @@
-body {
-  margin: 0;
-  font-family: "Futura", "Yu Gothic", sans-serif;
+/* ===================================
+   STRETCH&STRENGTH - Service Page
+   Luxury Salon Design (matching index)
+   =================================== */
+
+:root {
+  /* Calming Color Palette */
+  --sage: #a8b5a0;
+  --sage-light: #c5cebf;
+  --sage-dark: #8a9a80;
+  --beige: #f5f1eb;
+  --beige-dark: #e8e2d9;
+  --cream: #fdfcfa;
+  --gold: #b8a88a;
+  --gold-light: #d4c9b5;
+  --charcoal: #3d3d3d;
+  --charcoal-light: #5a5a5a;
+  --white: #ffffff;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  --font-sans: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+
+  /* Spacing */
+  --section-padding: clamp(80px, 12vw, 140px);
+
+  /* Transitions */
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-header {
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--charcoal);
+  line-height: 1.8;
+  background: var(--cream);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===================================
+   Header
+   =================================== */
+.header {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  z-index: 2;
+  padding: 24px 48px;
+  transition: var(--transition);
 }
 
-#logo {
-  margin-left: 5%;
-  font-weight: bold;
-  width: 80%;
-  height: auto;
+.header.scrolled {
+  background: rgba(253, 252, 250, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
 }
 
-nav {
-  width: 50%;
+.logo img {
+  height: 32px;
+  width: auto;
+  transition: var(--transition);
 }
 
-header h1 {
-  margin: 0;
-  width: 40%;
-}
-
-header h1 a {
-  display: block;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin-right: 10px;
+.nav {
   display: flex;
-}
-
-nav ul li {
-  font-size: calc(100vw/60);
-  margin-right: 5%;
-  margin: 0 0 0 auto;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-}
-
-/** 共通 **/
-h2 {
-  margin-bottom: 0;
-  font-size: calc(100vw/60);
-  font-weight: lighter;
-  font-family: 'Courier New',sans-serif;
-  border-bottom: 3px solid transparent;
-  transition: border-bottom-color 1s ease;
-}
-
-h3 {
-  font-size: calc(100vw/40);
-  font-weight: bold;
-  margin-bottom: 5%;
-}
-
-/* メッセージセクション */
-.message-sec {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 5%;
-  text-align: center;
-  padding: 20px;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-
-.highlight-word {
-  font-size: calc(100vw/40);
-  font-weight: bold;
-}
-
-.normal-word {
-  font-size: calc(100vw/80);
-}
-
-@keyframes slideUp {
-  from {
-      transform: translateY(100%);
-      opacity: 0;
-  }
-  to {
-      transform: translateY(0);
-      opacity: 1;
-  }
-}
-
-.message-sec p {
-  animation: slideUp 0.5s ease-out forwards;
-  opacity: 0;
-  transform: translateY(100%);
-}
-
-/* それぞれの段落に異なる遅延を適用 */
-.message-sec p:nth-child(1) { animation-delay: 0.3s; }
-.message-sec p:nth-child(2) { animation-delay: 0.6s; }
-.message-sec p:nth-child(3) { animation-delay: 0.9s; }
-.message-sec p:nth-child(4) { animation-delay: 1.2s; }
-.message-sec p:nth-child(5) { animation-delay: 1.5s; }
-.message-sec p:nth-child(6) { animation-delay: 1.8s; }
-
-
-/* トレーニング・ストレッチの紹介セクション */
-.program-sec {
-  box-sizing:border-box;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 20px;
+  gap: 40px;
+}
+
+.nav a {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--sage);
+  transition: var(--transition);
+}
+
+.nav a:not(.nav-cta):hover::after {
   width: 100%;
 }
 
-/* pc画面 */
-.for-pc {
-  display: block;
+.nav-cta {
+  padding: 12px 28px;
+  background: var(--sage);
+  color: var(--white) !important;
+  border-radius: 2px;
+  font-size: 13px !important;
+  letter-spacing: 0.15em;
 }
 
-/* スマホ画面 */
-.for-sp {
-  display: none;
+.nav-cta:hover {
+  background: var(--sage-dark);
 }
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--charcoal);
+  transition: var(--transition);
+}
+
+.menu-toggle.active span:first-child {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:last-child {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===================================
+   Section Common
+   =================================== */
+.section-label {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--sage-dark);
+  margin-bottom: 24px;
+}
+
+/* ===================================
+   Page Title
+   =================================== */
+
+/* ===================================
+   Message Section
+   =================================== */
+.message-sec {
+  padding: 60px 24px var(--section-padding);
+  background: var(--cream);
+}
+
+.message-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.highlight-word {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 40px 0;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+}
+
+.normal-word {
+  font-size: 15px;
+  color: var(--charcoal-light);
+  line-height: 2.4;
+  margin: 20px 0;
+}
+
+/* ===================================
+   Program Section
+   =================================== */
+.program-sec {
+  padding: var(--section-padding) 24px;
+  background: var(--beige);
+}
+
+.program-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.program-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 56px;
+}
+
+.for-pc { display: block; }
+.for-sp { display: none; }
 
 .grid-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
+  gap: 20px;
   width: 100%;
-  margin: auto;
-  background-color: #FFFFFF;
-  padding-bottom: 5%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.grid-block-1,
+.grid-block-2 {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
 }
 
 .grid-block-1 {
-  aspect-ratio: 1 / 1;
-  background-color: #FFDBC9;
-  position: relative;
-  margin: 0 0 0 30%;
+  background: var(--cream);
+  margin: 0 0 0 12%;
 }
 
 .grid-block-2 {
-  aspect-ratio: 1 / 1;
-  background-color: #FFDBC9;
-  position: relative;
-  margin: 0 30% 0 0;
+  background: var(--cream);
+  margin: 0 12% 0 0;
+}
+
+.training-image,
+.stretch-image {
+  background-size: cover;
+  background-position: center;
+  transition: filter var(--transition-slow);
 }
 
 .training-image {
   background-image: url('../images/training-img.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(100%);
+  filter: grayscale(30%);
 }
 
 .stretch-image {
   background-image: url('../images/stretch-img.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(100%);
+  filter: grayscale(30%);
+}
+
+.training-image:hover,
+.stretch-image:hover {
+  filter: grayscale(0%);
 }
 
 .centered-text {
@@ -184,49 +285,85 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
-  font-size: calc(100vw/20);
-  border-bottom: 1px solid #FFFFFF;
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
+.centered-text::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-top: 12px;
+}
+
+/* Training text blocks */
 .train-summary {
   position: absolute;
-  top: 20%;
+  top: 16.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  color: #000000;
-  font-size: calc(100vw/80);
+  width: 85%;
+  font-size: clamp(14px, 1.55vw, 19px);
+  font-weight: 400;
+  color: var(--charcoal);
   text-align: center;
-  font-weight: bold;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 5%;
+  letter-spacing: 0.05em;
+}
+
+.grid-block-2:has(.train-summary)::before {
+  content: '';
+  position: absolute;
+  top: 33.3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 1px;
+  background: var(--sage);
+  z-index: 1;
 }
 
 .train-description {
   position: absolute;
-  top: 65%;
+  top: 66.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  color: #000000;
-  font-size: calc(100vw/110);
+  font-size: clamp(11px, 1.15vw, 14px);
+  color: var(--charcoal-light);
   text-align: center;
-  padding-top: 5%;
+  line-height: 1.75;
 }
 
+/* Stretch text blocks */
 .stretch-summary {
   position: absolute;
-  top: 35%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  color: #000000;
-  font-size: calc(100vw/80);
+  width: 85%;
+  font-size: clamp(14px, 1.55vw, 19px);
+  font-weight: 400;
+  color: var(--charcoal);
   text-align: center;
-  font-weight: bold;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 5%;
+  letter-spacing: 0.05em;
+}
+
+.grid-block-1:has(.stretch-summary)::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 1px;
+  background: var(--sage);
+  z-index: 1;
 }
 
 .stretch-description {
@@ -234,382 +371,522 @@ h3 {
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  color: #000000;
-  font-size: calc(100vw/110);
+  width: 90%;
+  font-size: clamp(11px, 1.15vw, 14px);
+  color: var(--charcoal-light);
   text-align: center;
-  padding-top: 5%;
+  line-height: 1.75;
 }
 
-
-/* 料金プランセクション */
+/* ===================================
+   Plan Section
+   =================================== */
 .plan-sec {
-  box-sizing:border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: var(--section-padding) 24px;
+  background: var(--cream);
+}
+
+.plan-inner {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
-  padding: 20px;
-  padding-top: 5%;
-  padding-bottom: 10%;
-  background-color: #EEEEEE;
-  width: 100%;
+}
+
+.plan-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 56px;
 }
 
 .content-blocks {
   display: flex;
   justify-content: center;
-  gap: 5%;
-  width: 80%;
-  font-size: calc(100vw/60);
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 56px;
 }
 
-.light-course,.advance-course {
-  background-color: #FFFFFF;
-  padding: 5%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+.light-course,
+.advance-course {
+  background: var(--beige);
+  padding: 48px 36px;
   width: 100%;
   text-align: center;
-  font-weight: bold;
+  transition: var(--transition);
+  border: 1px solid var(--beige-dark);
 }
 
-.light-course {
-  color: #555555;
+.light-course:hover,
+.advance-course:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
-.advance-course {
-  color: #ff7761;
+.course-label {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--sage-dark);
+  margin-bottom: 8px;
+}
+
+.course-name {
+  font-size: 13px;
+  color: var(--charcoal-light);
+  margin: 0 0 24px 0;
 }
 
 .charge {
-  font-size: calc(100vw/30);
-  color: #000000;
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  color: var(--charcoal);
+  margin: 20px 0;
+  letter-spacing: 0.05em;
 }
 
-.light-course p {
-  color: #000000;
-  font-size: calc(100vw/80);
-  font-weight: lighter;
-}
-
-.advance-course p {
-  color: #000000;
-  font-size: calc(100vw/80);
-  font-weight: lighter;
+.course-desc {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 2;
+  margin: 0;
 }
 
 .price-list {
-  width: 40%;
-  margin-top: 5%;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .price-list img {
   width: 100%;
 }
 
-/*初回の流れセクション*/
+/* ===================================
+   Session Section
+   =================================== */
 .session-sec {
-  box-sizing:border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  margin: 5% 0;
-  width: 100%;
+  padding: var(--section-padding) 24px;
+  background: var(--beige);
 }
 
-.content {
+.session-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.session-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 48px;
+}
+
+.session-step {
   display: flex;
   align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
   text-align: left;
-  gap: 5%;
-  width: 50%;
-  margin-bottom: 10px;
 }
 
-.rectangle {
-  background-color: #ff7761;
-  width: calc(100vw/90);
-  height: calc(100vw/50);
+.step-num {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--sage-dark);
+  min-width: 40px;
+  letter-spacing: 0.05em;
 }
 
-.content span {
-  font-size: calc(100vw/50);
-  font-weight: bold;
+.step-line {
+  width: 2px;
+  height: 36px;
+  background: var(--sage-light);
 }
 
-.session-sec p {
-  font-size: calc(100vw/70);
+.step-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--charcoal);
+  letter-spacing: 0.05em;
 }
 
+.session-note {
+  font-size: 13px;
+  color: var(--charcoal-light);
+  margin: 28px 0;
+}
 
-/*予約ボタンセクション*/
+/* ===================================
+   Reservation Section
+   =================================== */
 .reservation-sec {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: var(--section-padding) 24px;
+  background: var(--sage);
+}
+
+.reservation-inner {
+  max-width: 600px;
+  margin: 0 auto;
   text-align: center;
-  padding: 5% 0;
-  background-color: #FFDBC9;
-  width: 100%;
 }
 
-.button {
-  height: 20%;
+.reservation-label {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.reservation-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+
+.reservation-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 36px;
+}
+
+.cta-button {
   display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  color: white;
-  padding: 1% 2%;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-  border: 5px solid #000000;
-  font-size: calc(100vw/50);
+  padding: 18px 56px;
+  background: var(--white);
+  color: var(--sage-dark);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  transition: var(--transition);
 }
 
-.button:hover {
-  background-color: white;
-  color: black;
+.cta-button:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-
-/** トレーナー紹介セクション **/
+/* ===================================
+   Profile Section
+   =================================== */
 .profile-sec {
-  box-sizing:border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 5%;
-  margin: 5% 0;
-  width: 100%;
+  padding: var(--section-padding) 24px;
+  background: var(--cream);
+}
+
+.profile-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 56px;
 }
 
 .profile-container {
   display: flex;
   align-items: stretch;
-  width: 100%;
+  gap: 56px;
+  text-align: left;
 }
 
 .profile-image {
-  flex-basis: 50%;
-  display: flex;
-  align-items: stretch;
+  flex: 1;
+  overflow: hidden;
 }
 
 .profile-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
 .profile-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-basis: 50%;
-  padding: 0 20px;
 }
 
-.profile-content h4 {
-  font-size: calc(100vw/60);
+.trainer-name {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 4px 0;
+  letter-spacing: 0.1em;
 }
 
-.profile-content h5 {
-  font-size: calc(100vw/70);
-  font-weight: lighter;
+.trainer-name-en {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--sage);
+  margin: 0 0 32px 0;
 }
 
-.profile-content h6 {
-  font-size: calc(100vw/70);
-  margin: 0 auto;
-  background-color: #000000;
-  color: #FFFFFF;
-  font-weight: lighter;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.trainer-detail {
+  margin-bottom: 20px;
 }
 
-.profile-content h4 {
-  margin: 10px 0;
+.trainer-detail:last-child {
+  margin-bottom: 0;
 }
 
-.profile-content p {
-  font-size: calc(100vw/70);
+.trainer-detail h4 {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--sage-dark);
+  margin: 0 0 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--beige-dark);
 }
 
+.trainer-detail p {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 1.9;
+  margin: 0;
+}
 
-/*Q&Aセクション*/
+/* ===================================
+   Q&A Section
+   =================================== */
 .qa-sec {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #EEEEEE;
-  padding: 5% 0;
-  width: 100%;
+  padding: var(--section-padding) 24px;
+  background: var(--beige);
 }
 
-/* inputのチェックボックスを非表示 */
+.qa-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.qa-title {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 48px;
+}
+
 .accordion-hidden {
   display: none;
 }
 
-/* 見出しボタン部分 */
 .accordion-open {
   display: flex;
-  background-color: white;
+  align-items: center;
+  background: var(--cream);
   cursor: pointer;
-  margin: 5px 0;
+  margin: 10px 0;
+  width: 100%;
+  transition: var(--transition);
   position: relative;
-  width: 60%;
-  gap: 5%;
-  font-size: calc(100vw/80);
+  overflow: hidden;
+  border: 1px solid var(--beige-dark);
+}
+
+.accordion-open:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
 .question-num {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10%;
-  background-color: black;
-  color: white;
+  min-width: 60px;
+  height: 100%;
+  padding: 20px;
+  background: var(--sage);
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
 }
 
-/* ＋アイコン */
+.question-txt {
+  flex: 1;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0;
+  text-align: left;
+}
+
 .accordion-open::before,
 .accordion-open::after {
   content: '';
-  width: calc(100vw/60);
-  height: 3px;
-  background: #000;
+  width: 14px;
+  height: 1px;
+  background: var(--sage);
   position: absolute;
+  right: 24px;
   top: 50%;
-  right: 5%;
   transform: translateY(-50%);
+  transition: transform var(--transition);
 }
 
-/* アイコンのー */
 .accordion-open::after {
   transform: translateY(-50%) rotate(90deg);
-  transition: .5s;
 }
 
-/* アコーディオンが開いたらーに */
-.accordion-hidden:checked+.accordion-open:after {
+.accordion-hidden:checked + .accordion-open::after {
   transform: translateY(-50%) rotate(0);
 }
 
-/* アコーディオン中身部分 */
 .accordion-inner {
-  width: 70%;
-  display: block;
-  height: 0;
-  padding: 0;
-  opacity: 0;
-  transition: 0.5s;
-  /* 表示速度の設定 */
-  cursor: pointer;
-  /*回答の位置調整*/
   display: flex;
   justify-content: center;
-  font-size: calc(100vw/80);
+  width: 100%;
+  height: 0;
+  padding: 0 20px;
+  opacity: 0;
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 2;
+  transition: all var(--transition);
+  overflow: hidden;
+  text-align: left;
 }
 
-/* チェックボックスにチェックが入ったら中身部分を表示する */
-.accordion-hidden:checked+.accordion-open+.accordion-inner {
+.accordion-hidden:checked + .accordion-open + .accordion-inner {
   height: auto;
   opacity: 1;
-  padding: 10px;
+  padding: 24px 28px;
 }
 
-
-/* フッター */
+/* ===================================
+   Footer
+   =================================== */
 .footer {
-  background-color: white;
-  color: black;
-  padding: 40px;
-  text-align: center;
-  width: 40%;
+  padding: 64px 48px 32px;
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.footer-inner {
+  max-width: 1100px;
   margin: 0 auto;
-}
-
-.footer-links {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
-  grid-template-rows: repeat(4, auto); /* 4行のグリッド */
-  gap: 20%;
-  margin-bottom: 20%;
-  font-size: calc(100vw/80); /* テキストのサイズ */
+  grid-template-columns: 1fr auto auto;
+  gap: 64px;
+  align-items: start;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-links a {
-  color: black;
-  text-decoration: none;
+.footer-logo {
+  height: 28px;
+  width: auto;
+  /* ロゴ画像はそのまま表示 */
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav a {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.footer-nav a:hover {
+  opacity: 1;
+}
+
+.footer-contact p {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+
+.footer-line {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.footer-line:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1;
 }
 
 .footer-bottom {
-  font-size: calc(100vw/100);
+  max-width: 1100px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/** レスポンシブ対応 **/
+.footer-sns a {
+  color: var(--white);
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.footer-sns a:hover {
+  opacity: 1;
+}
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================
+   Responsive
+   =================================== */
 @media (max-width: 960px) {
-}
-
-@media (max-width: 600px) {
-  /* ヘッダー */
-  header {
-    padding: 10px;
-  }
-
-  #logo {
-    width: 90%;
-  }
-
-  nav ul li {
-    font-size: calc(100vw/50);
-    margin-right: 5%;
-    margin: 0 0 0 auto;
-  }
-
-  /* 共通セクション */
-  h2 {
-    font-size: calc(100vw/30);
-  }
-  
-  h3 {
-    font-size: calc(100vw/20);
-  }
-
-  /* メッセージセクション */
-  .highlight-word {
-    font-size: calc(100vw/20);
-    font-weight: bold;
-  }
-  
-  .normal-word {
-    font-size: calc(100vw/40);
-  }
-
-  /* プログラムセクション */
-  .for-pc {
-    display: none;
-  }
-  
-  .for-sp {
-    display: block;
+  .header {
+    padding: 20px 24px;
   }
 
   .grid-section {
-    grid-template-columns: none;
-    width: 80%;
+    gap: 16px;
   }
 
   .grid-block-1 {
@@ -620,134 +897,191 @@ h3 {
     margin: 0;
   }
 
-  .centered-text {
-    font-size: calc(100vw/10);
-  }
-  
-  .train-summary {
-    font-size: calc(100vw/40);
-  }
-  
-  .train-description {
-    font-size: calc(100vw/50);
-  }
-  
-  .stretch-summary {
-    font-size: calc(100vw/40);
-  }
-  
-  .stretch-description {
-    font-size: calc(100vw/50);
-  }
-
-  /* 料金セクション */
-  .plan-sec .content-blocks {
-    width: 90%;
-  }
-
-  .content-blocks {
-    display: block;
-    font-size: calc(100vw/30);
-  }
-  
-  .light-course,.advance-course {
-    width: auto;
-  }
-
-  .light-course {
-    margin-bottom: 10%;
-  }
-
-  .charge {
-    font-size: calc(100vw/20);
-  }
-  
-  .light-course p {
-    font-size: calc(100vw/30);
-  }
-  
-  .advance-course p {
-    font-size: calc(100vw/30);
-  }
-
-  .price-list {
-    width: 80%;
-    margin-top: 10%;
-  }
-  
-  .price-list img {
-    width: 100%;
-  }
-
-  /* 初回の流れセクション */
-  .content {
-    width: 80%;
-  }
-
-  .rectangle {
-    width: calc(100vw/90);
-    height: calc(100vw/20);
-  }
-  
-  .content span {
-    font-size: calc(100vw/20);
-  }
-  
-  .session-sec p {
-    font-size: calc(100vw/30);
-  }
-
-  /* 予約セクション */
-  .reservation-sec .button{
-    font-size: calc(100vw/30);
-  }
-
-  /* トレーナー紹介セクション */
   .profile-container {
-    display: block;
+    flex-direction: column;
+    gap: 40px;
   }
 
-  .profile-content h4 {
-    font-size: calc(100vw/20);
-    margin-top: 5%;
-  }
-  
-  .profile-content h5 {
-    font-size: calc(100vw/30);
-    margin-top: 0;
-  }
-  
-  .profile-content h6 {
-    font-size: calc(100vw/30);
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
 
-  .profile-content p {
-    font-size: calc(100vw/30);
+  .footer-nav {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
   }
 
-  /* Q&Aセクション */
-  .accordion-open {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    background: var(--cream);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+
+  .nav.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav a {
+    font-size: 18px;
+    color: var(--charcoal) !important;
+  }
+
+  .nav-cta {
+    margin-top: 20px;
+    background: var(--sage) !important;
+    color: var(--white) !important;
+  }
+
+  /* Message */
+  .message-sec {
+    padding: 140px 20px var(--section-padding);
+  }
+
+  /* Program */
+  .for-pc { display: none; }
+  .for-sp { display: block; }
+
+  .grid-section {
+    grid-template-columns: 1fr;
     width: 90%;
-    font-size: calc(100vw/30);
+    gap: 16px;
   }
 
-  .accordion-inner {
-    font-size: calc(100vw/30);
+  .grid-block-1,
+  .grid-block-2 {
+    margin: 0;
+  }
+
+  /* テキストブロックはaspect-ratioを解除し、テキストを自然配置 */
+  .grid-block-2:not(.stretch-image),
+  .grid-block-1:not(.training-image) {
+    aspect-ratio: auto;
+    padding: 32px 20px;
+  }
+
+  .centered-text {
+    font-size: 28px;
+  }
+
+  .train-summary,
+  .stretch-summary {
+    position: static;
+    transform: none;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--sage);
+  }
+
+  .train-description,
+  .stretch-description {
+    position: static;
+    transform: none;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  /* テキストブロックの::before区切り線は不要（border-bottomで代替） */
+  .grid-block-2:has(.train-summary)::before,
+  .grid-block-1:has(.stretch-summary)::before {
+    display: none;
+  }
+
+  /* Plan */
+  .content-blocks {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .light-course,
+  .advance-course {
+    padding: 36px 24px;
+  }
+
+  /* Profile */
+  .profile-container {
+    padding: 0;
+  }
+
+  .trainer-name {
+    font-size: 22px;
+    margin-top: 16px;
+  }
+
+  /* Q&A */
+  .accordion-open {
+    margin: 8px 0;
+  }
+
+  .question-num {
+    min-width: 50px;
+    padding: 16px;
+    font-size: 12px;
+  }
+
+  .question-txt {
+    font-size: 13px;
+    padding: 16px;
   }
 
   .accordion-open::before,
   .accordion-open::after {
-    width: calc(100vw/50);
+    width: 12px;
+    right: 16px;
   }
 
-  /* フッター */
+  .accordion-inner {
+    font-size: 13px;
+  }
+
+  /* Footer */
   .footer {
-    width: 40%;
+    padding: 48px 24px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlight-word {
+    font-size: 20px;
   }
 
-  .footer-links {
-    gap: 20%;
-    margin-bottom: 40%;
-    font-size: calc(100vw/40);
+  .normal-word {
+    font-size: 14px;
+  }
+
+  .charge {
+    font-size: 28px;
+  }
+
+  .cta-button {
+    padding: 16px 40px;
+    font-size: 13px;
   }
 }
