@@ -715,7 +715,7 @@ a {
    =================================== */
 .contact-section {
   padding: var(--section-padding) 24px;
-  background: var(--beige);
+  background: var(--cream);
 }
 
 .contact-section-inner {
@@ -977,8 +977,8 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     gap: 28px;
