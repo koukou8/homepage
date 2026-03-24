@@ -175,16 +175,6 @@ a {
 /* ===================================
    Page Title
    =================================== */
-.page-title {
-  font-family: var(--font-sans);
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  text-align: center;
-  padding: 140px 24px 0;
-  margin: 0;
-  background: var(--cream);
-}
 
 /* ===================================
    Message Section
@@ -804,7 +794,7 @@ a {
 .footer-logo {
   height: 28px;
   width: auto;
-  filter: brightness(0) invert(1);
+  /* ロゴ画像はそのまま表示 */
   opacity: 0.8;
   margin-bottom: 12px;
 }
@@ -940,8 +930,8 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     gap: 28px;
@@ -987,21 +977,41 @@ a {
     margin: 0;
   }
 
+  /* テキストブロックはaspect-ratioを解除し、テキストを自然配置 */
+  .grid-block-2:not(.stretch-image),
+  .grid-block-1:not(.training-image) {
+    aspect-ratio: auto;
+    padding: 32px 20px;
+  }
+
   .centered-text {
     font-size: 28px;
   }
 
   .train-summary,
   .stretch-summary {
-    font-size: 14px;
-    top: 15%;
+    position: static;
+    transform: none;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--sage);
   }
 
   .train-description,
   .stretch-description {
-    font-size: 11px;
-    top: 35%;
-    line-height: 1.6;
+    position: static;
+    transform: none;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  /* テキストブロックの::before区切り線は不要（border-bottomで代替） */
+  .grid-block-2:has(.train-summary)::before,
+  .grid-block-1:has(.stretch-summary)::before {
+    display: none;
   }
 
   /* Plan */
