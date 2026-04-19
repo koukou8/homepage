@@ -166,8 +166,12 @@ a {
   height: 28px;
   background: none;
   border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
   cursor: pointer;
-  z-index: 101;
+  position: relative;
+  z-index: 1000;
 }
 
 .menu-toggle span {
@@ -983,6 +987,7 @@ a {
     justify-content: center;
     gap: 28px;
     background: var(--cream);
+    z-index: 999;
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
