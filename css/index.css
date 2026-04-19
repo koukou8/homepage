@@ -1005,7 +1005,15 @@ a {
   }
 
   .hero {
-    min-height: 600px;
+    min-height: unset;
+    height: auto;
+  }
+
+  .hero-video {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: unset;
   }
 
   .concept-features {
