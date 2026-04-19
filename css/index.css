@@ -186,6 +186,10 @@ a {
   background: var(--white);
 }
 
+.menu-toggle.active span {
+  background: var(--charcoal);
+}
+
 .menu-toggle.active span:first-child {
   transform: rotate(45deg) translate(6px, 6px);
 }
