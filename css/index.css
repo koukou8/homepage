@@ -191,11 +191,11 @@ a {
 }
 
 .menu-toggle.active span:first-child {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: translateY(4.5px) rotate(45deg);
 }
 
 .menu-toggle.active span:last-child {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: translateY(-4.5px) rotate(-45deg);
 }
 
 /* ===================================
