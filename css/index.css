@@ -1006,8 +1006,8 @@ a {
 
   .hero {
     min-height: unset;
-    height: 65vw;
-    max-height: 75vh;
+    height: 98vw;
+    max-height: 100vh;
   }
 
   .hero-video {
