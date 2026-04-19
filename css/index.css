@@ -186,7 +186,7 @@ a {
   background: var(--white);
 }
 
-.menu-toggle.active span {
+.header .menu-toggle.active span {
   background: var(--charcoal);
 }
 
